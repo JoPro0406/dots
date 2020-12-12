@@ -1,0 +1,7 @@
+# because nvm installs itself into XDG_CONFIG_HOME
+etc/nvm
+
+# nobody needs histfiles n stuff
+etc/zsh/.zcompdump
+etc/zsh/zsh_hist
+etc/nvim/.netrwhist
