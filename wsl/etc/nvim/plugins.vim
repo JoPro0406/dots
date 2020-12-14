@@ -9,6 +9,9 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 
+" langs
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
 " extras
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
