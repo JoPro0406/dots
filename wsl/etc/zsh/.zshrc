@@ -18,7 +18,7 @@ setopt extended_history
 setopt hist_ignore_dups
 setopt share_history
 
-#  Autocompletion
+# Autocompletion
 setopt NO_NOMATCH   # disable some globbing
 setopt complete_in_word
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -26,7 +26,8 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' matcher-list \
 	'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
-autoload -U compinit && compinit -C
+fpath=($ZDOTDIR/completions $fpath)
+autoload -U compinit && compinit
 
 # Plugins
 source <(antibody init)
@@ -36,6 +37,5 @@ antibody bundle zsh-users/zsh-syntax-highlighting
 
 # Aliases
 . $ZDOTDIR/aliases
-
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"

@@ -1,17 +1,35 @@
 " ---------- Plugin Options --------- "
-" lsp
+" lua
 lua require('lsp')
-" lua require('treesitter')
+lua require('treesitter')
 set completeopt=menuone,noinsert,noselect
 
 " airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme = "ayu_dark"
-let g:airline_left_sep = ""
-let g:airline_left_alt_sep = ""
-let g:airline_right_sep = ""
-let g:airline_right_alt_sep = ""
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme = "ayu_dark"
+" let g:airline_left_sep = ""
+" let g:airline_left_alt_sep = ""
+" let g:airline_right_sep = ""
+" let g:airline_right_alt_sep = ""
+
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'ayu_dark',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste'  ], [ 'readonly', 'filename', 'modified'  ]  ]
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers']  ],
+      \   'right': [ ['close']  ]
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ }
+      \ }
 
 " indentLine
 let g:indentLine_setColors = 0
