@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd "$DOTS" || exit
+
+[ -z "$*" ] && msg="updot" || msg="$*"
+
+git add .
+git commit -m "${msg}"
+git push origin master
