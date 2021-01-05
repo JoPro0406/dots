@@ -16,16 +16,28 @@ set completeopt=menuone,noinsert,noselect
 " lightline
 let g:lightline = {
       \ 'colorscheme': 'ayu_dark',
+      \
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste'  ], [ 'readonly', 'filename', 'modified'  ]  ]
+      \   'left':   [ [ 'mode', 'paste'  ],
+      \               [ 'gitbranch', 'filename'] ],
+      \   'right':  [ [ 'lineinfo' ],
+      \               [ 'percent' ],
+      \               [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
+      \
       \ 'tabline': {
-      \   'left': [ ['buffers']  ],
-      \   'right': [ ['close']  ]
+      \   'left':   [ [ 'buffers' ]  ],
+      \   'right':  [ [ 'close' ]  ]
       \ },
+      \
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \
       \ 'component_expand': {
       \   'buffers': 'lightline#bufferline#buffers'
       \ },
+      \
       \ 'component_type': {
       \   'buffers': 'tabsel'
       \ }
