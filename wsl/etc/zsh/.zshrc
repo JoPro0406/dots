@@ -10,9 +10,6 @@ bindkey '^[[1;5D'  backward-word          # Ctrl-LeftArrow
 PROMPT='%B%F{%(!.red.blue)}%3~ | %b%f'
 
 # History
-HISTFILE="$ZDOTDIR/zsh_hist"
-HISTSIZE=10000
-SAVEHIST=10000
 setopt histignorespace
 setopt extended_history
 setopt hist_ignore_dups

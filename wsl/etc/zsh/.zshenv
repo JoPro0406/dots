@@ -6,6 +6,10 @@ export XDG_CONFIG_HOME="$conf"
 export XDG_DATA_HOME="$data"
 export XDG_CACHE_HOME="$cache"
 
+export HISTFILE="$ZODTDIR/zsh_hist"
+export HISTSIZE=10000
+export SAVEHIST=10000
+
 export PATH="$HOME/bin":$PATH
 export PATH="$HOME/usr/bin":$PATH
 export PATH="$data/cargo/bin":$PATH
