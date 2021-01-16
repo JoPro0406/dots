@@ -7,11 +7,11 @@ set completeopt=menuone,noinsert,noselect
 " airline
 " let g:airline#extensions#tabline#enabled = 1
 " let g:airline_powerline_fonts = 1
-" let g:airline_theme = "ayu_dark"
-" let g:airline_left_sep = ""
-" let g:airline_left_alt_sep = ""
-" let g:airline_right_sep = ""
-" let g:airline_right_alt_sep = ""
+" let g:airline_theme = 'ayu_dark'
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
 
 " lightline
 let g:lightline = {
@@ -47,7 +47,7 @@ let g:lightline = {
 let g:indentLine_setColors = 0
 let g:indentLine_enabled = 0
 let g:indentLine_leadingSpaceEnabled = 1
-let g:indentLine_leadingSpaceChar = "·"
+let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_fileTypeExclude = ['dashboard']
 
 " nerdcommenter
@@ -59,7 +59,8 @@ let g:NERDTrimTrailingWhitespace = 1
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " dashboard-nvim
-let g:dashboard_default_executive = 'fzf'
+let g:dashboard_default_header = 'commicgirl15'
+let g:dashboard_default_executive = 'telescope'
 let g:dashboard_custom_shortcut = {
       \ 'last_session'       : 'SPC s l',
       \ 'find_history'       : 'SPC f h',
@@ -69,7 +70,7 @@ let g:dashboard_custom_shortcut = {
       \ 'find_word'          : 'SPC f a',
       \ 'book_marks'         : 'SPC f b',
       \ }
-let g:dashboard_default_header = "commicgirl15"
+autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2
 
 " nvim-colorizer
 lua require'colorizer'.setup()
