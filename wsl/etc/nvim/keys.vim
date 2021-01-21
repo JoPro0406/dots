@@ -1,6 +1,7 @@
 let mapleader="\<Space>"
 
 nnoremap <silent> <Leader> :WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :WhichKeyVisual '<Space>'<CR>
 
 nnoremap <silent> <Leader>l :bnext<CR>
 nnoremap <silent> <Leader>h :bprevious<CR>
@@ -17,3 +18,5 @@ if g:dashboard_default_executive == 'fzf'
 elseif g:dashboard_default_executive == 'telescope'
   nnoremap <silent> <Leader>fb <cmd>lua require('telescope.builtin').buffers({ show_all_buffers = true })<CR>
 endif
+
+inoremap <silent> <C-Space> <Plug>(completion_trigger)

@@ -1,45 +1,61 @@
-" ---------- Plugin Options --------- "
+" ========== Plugin Options ========= "
 " lua
 lua require('lsp')
 lua require('treesitter')
 set completeopt=menuone,noinsert,noselect
+let g:completion_chain_complete_list = {
+      \ 'default': [
+      \   {'complete_items': ['lsp', 'snippet', 'tabnine' ]},
+      \   {'mode': '<c-p>'},
+      \   {'mode': '<c-n>'}
+      \ ]
+      \ }
+let g:completion_tabnine_priority = 1
 
-" airline
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline_powerline_fonts = 1
-" let g:airline_theme = 'ayu_dark'
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_right_alt_sep = ''
+" ale
+let g:ale_disable_lsp = 1
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+      \ '*': [ 'remove_trailing_lines', 'trim_whitespace' ],
+      \ }
 
 " lightline
 let g:lightline = {
       \ 'colorscheme': 'ayu_dark',
       \
       \ 'active': {
-      \   'left':   [ [ 'mode', 'paste'  ],
-      \               [ 'gitbranch', 'filename'] ],
-      \   'right':  [ [ 'lineinfo' ],
-      \               [ 'percent' ],
-      \               [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \   'left' : [ [ 'mode', 'paste'  ],
+      \              [ 'gitbranch', 'filename'] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ],
       \ },
       \
       \ 'tabline': {
-      \   'left':   [ [ 'buffers' ]  ],
-      \   'right':  [ [ 'close' ]  ]
+      \   'left' : [ [ 'buffers' ]  ],
+      \   'right': [ [ 'close' ]  ],
       \ },
       \
       \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
+      \   'gitbranch': 'FugitiveHead',
       \ },
       \
       \ 'component_expand': {
-      \   'buffers': 'lightline#bufferline#buffers'
+      \   'buffers'       : 'lightline#bufferline#buffers',
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_infos'   : 'lightline#ale#infos',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors'  : 'lightline#ale#errors',
+      \  'linter_ok'      : 'lightline#ale#ok',
       \ },
       \
       \ 'component_type': {
-      \   'buffers': 'tabsel'
+      \   'buffers'        : 'tabsel',
+      \   'linter_checking': 'right',
+      \   'linter_infos'   : 'right',
+      \   'linter_warnings': 'warning',
+      \   'linter_errors'  : 'error',
+      \   'linter_ok'      : 'right',
       \ }
       \ }
 

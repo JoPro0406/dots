@@ -14,7 +14,7 @@ export PATH="$HOME/bin":$PATH
 export PATH="$HOME/usr/bin":$PATH
 export PATH="$data/cargo/bin":$PATH
 
-export DOTS="$HOME/usr/prj/dots"
+export DOTS="$HOME/usr/git/dots"
 
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
