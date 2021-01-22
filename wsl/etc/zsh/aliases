@@ -16,5 +16,5 @@ alias vi="nvim"
 
 alias stow="stow -d $DOTS -t $HOME"
 
-alias vconf="nvim $DOTS/wsl/etc/nvim/init.vim -c 'cd %:p:h'"
+alias vconf="nvim $DOTS/wsl/etc/nvim/init.lua -c 'cd %:p:h'"
 alias zconf="nvim $DOTS/wsl/etc/zsh/zshrc -c 'cd %:p:h'"
