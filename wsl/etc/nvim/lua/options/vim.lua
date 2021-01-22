@@ -1,3 +1,5 @@
+local hv = require('helpful.vim')
+
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax enable')
 
@@ -5,11 +7,12 @@ vim.g.ayucolor = 'dark'
 vim.cmd('colorscheme ayu')
 
 local indent = 2
-local options = {
+hv.setoption({
   scrolloff     = 1,
   cursorline    = true,
   mouse         = 'a',
   number        = true,
+  wrap          = false,
   signcolumn    = 'yes',
   termguicolors = true,
   laststatus    = 2,
@@ -19,6 +22,7 @@ local options = {
   tabstop       = indent,
   softtabstop   = indent,
   shiftwidth    = indent,
+  smartindent   = true,
   copyindent    = false,
   expandtab     = true,
 
@@ -27,23 +31,22 @@ local options = {
   ignorecase    = true,
   smartcase     = true,
 
+  updatetime    = 100,
   backspace     = 'indent,eol,start',
-}
-for opt, val in pairs(options) do
-  vim.o[opt] = val
-end
+})
+-- reassign in buffer and window scope because nvim
+vim.bo.tabstop     = indent
+vim.bo.softtabstop = indent
+vim.bo.smartindent = true
+vim.bo.expandtab   = true
+vim.wo.signcolumn  = 'yes'
+vim.wo.number      = true
+vim.wo.wrap        = false
 
-vim.cmd('set tabstop=' .. indent)
-vim.cmd('set softtabstop=' .. indent)
-vim.cmd('set shiftwidth=' .. indent)
-vim.cmd('set expandtab')
 
-local globals = {
+hv.setglobal({
   netrw_banner = 0,
   netrw_liststyle = 3,
   netrw_browse_split = 4,
   netrw_winsize = 20,
-}
-for glob, val in pairs(globals) do
-  vim.g[glob] = val
-end
+})

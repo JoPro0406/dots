@@ -1,3 +1,1 @@
-local M = {}
-
-function M.addGlob
+require('helpful.vim')
