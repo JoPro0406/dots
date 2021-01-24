@@ -12,6 +12,7 @@ return require('packer').startup(function()
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'euclidianAce/BetterLua.vim'
+  use 'LnL7/vim-nix'
 
   use 'norcalli/nvim-colorizer.lua'
   use 'jiangmiao/auto-pairs'
