@@ -1,20 +1,21 @@
 #!/bin/sh
 
-alias grep="grep --color=auto"
+alias grep='grep --color=auto'
 
-alias ls="exa --icons --group-directories-first"
-alias la="ls -lah"
+alias ls='exa --icons --group-directories-first'
+alias la='ls -lah'
 
-alias gs="git status"
-alias ga="git add"
-alias gaa="git add -A"
-alias gc="git commit"
-alias gcm="git commit -m"
+alias gs='git status'
+alias ga='git add'
+alias gaa='git add -A'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gl='git log --all --decorate --oneline --graph'
 
-alias vim="nvim"
-alias vi="nvim"
+alias vim='nvim'
+alias vi='nvim'
 
-alias stow="stow -d $DOTS -t $HOME"
+alias stow='stow -d $DOTS -t $HOME'
 
-alias vconf="nvim $DOTS/wsl/etc/nvim/init.lua -c 'cd %:p:h'"
-alias zconf="nvim $DOTS/wsl/etc/zsh/zshrc -c 'cd %:p:h'"
+alias vconf='nvim $DOTS/wsl/etc/nvim/init.lua -c "cd %:p:h"'
+alias zconf='nvim $DOTS/wsl/etc/zsh/zshrc -c "cd %:p:h"'

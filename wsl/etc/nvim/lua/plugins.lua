@@ -1,3 +1,8 @@
+local install_path = vim.fn.stdpath('data') .. '/site/packer/opt/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  vim.cmd('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+end
+
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
@@ -30,5 +35,6 @@ return require('packer').startup(function()
   use { 'itchyny/lightline.vim' }
   use { 'mengelbrecht/lightline-bufferline', requires = 'itchyny/lightline.vim' }
   use { 'maximbaz/lightline-ale', requires = 'itchyny/lightline.vim' }
+
   use { 'ayu-theme/ayu-vim', as = 'ayu' }
 end)

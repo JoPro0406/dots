@@ -76,3 +76,4 @@ hv.setglobal({
 })
 vim.cmd([[let g:ale_fixers = { '*': [ 'remove_trailing_lines', 'trim_whitespace'  ] }]])
 vim.cmd([[autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2]])
+require('colorizer').setup()
