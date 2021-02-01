@@ -8,6 +8,7 @@ vim.cmd('colorscheme ayu')
 
 local indent = 2
 hv.setoption({
+  background    = 'dark',
   scrolloff     = 1,
   cursorline    = true,
   mouse         = 'a',
@@ -18,7 +19,7 @@ hv.setoption({
   laststatus    = 2,
   showtabline   = 2,
   showmode      = false,
-  
+
   tabstop       = indent,
   softtabstop   = indent,
   shiftwidth    = indent,
@@ -37,6 +38,7 @@ hv.setoption({
 -- reassign in buffer and window scope because nvim
 vim.bo.tabstop     = indent
 vim.bo.softtabstop = indent
+vim.bo.shiftwidth  = indent
 vim.bo.smartindent = true
 vim.bo.expandtab   = true
 vim.wo.signcolumn  = 'yes'

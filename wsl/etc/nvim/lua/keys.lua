@@ -9,6 +9,8 @@ hv.noremap('n', '<Leader>l', ':bnext<CR>')
 hv.noremap('n', '<Leader>h', ':bprevious<CR>')
 hv.noremap('n', '<Leader>w', ':bwipeout<CR>')
 
+hv.noremap('n', '<Leader>G', ':Goyo<CR>')
+
 hv.noremap('n', '<Leader>fh', ':DashboardFindHistory<CR>', { silent = true })
 hv.noremap('n', '<Leader>ff', ':DashboardFindFile<CR>', { silent = true })
 hv.noremap('n', '<Leader>tc', ':DashboardChangeColorscheme<CR>', { silent = true })
