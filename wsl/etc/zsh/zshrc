@@ -41,4 +41,4 @@ antibody bundle zdharma/fast-syntax-highlighting
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Prompt
-PROMPT='%B%F{blue}%3~ | %b%f'
+. $ZDOTDIR/prompt.zsh
