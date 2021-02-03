@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 set -k # comments
 setopt auto_cd # cd by directory name
 unsetopt flowcontrol # disable <C-S> + <C-Q>
@@ -5,9 +7,6 @@ unsetopt flowcontrol # disable <C-S> + <C-Q>
 # Keybinds
 bindkey '^[[1;5C'  forward-word           # Ctrl-RightArrow
 bindkey '^[[1;5D'  backward-word          # Ctrl-LeftArrow
-
-# Prompt
-PROMPT='%B%F{blue}%3~ | %b%f'
 
 # History
 setopt histignorespace
@@ -22,7 +21,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu select
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' matcher-list \
-	'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+  'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 fpath=($ZDOTDIR/completions $fpath)
 autoload -U compinit && compinit
 
@@ -30,11 +29,16 @@ autoload -U compinit && compinit
 source <(antibody init)
 antibody bundle zsh-users/zsh-autosuggestions
 antibody bundle zsh-users/zsh-completions
-antibody bundle zsh-users/zsh-syntax-highlighting
+# antibody bundle zsh-users/zsh-syntax-highlighting
+antibody bundle zdharma/fast-syntax-highlighting
 
 # Aliases
 . $ZDOTDIR/aliases
 
+# Source stuff
 . /home/archwsl/.nix-profile/etc/profile.d/nix.sh
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# Prompt
+PROMPT='%B%F{blue}%3~ | %b%f'
