@@ -1,0 +1,32 @@
+format = """
+[╭─](bold blue)$username$directory$git_branch$git_status$status
+[╰→](bold blue) """
+
+add_newline = false
+
+[username]
+format = " [$user]($style)"
+style_user = "cyan"
+style_root = "purple"
+show_always = true
+
+[directory]
+format = " in [$path]($style) [$read_only]($read_only_style)"
+style = "bold blue"
+read_only = "[R]"
+read_only_style = "bold red"
+truncation_length = 1
+fish_style_pwd_dir_length = 1
+
+[git_branch]
+format = " on [$branch]($style)"
+style = "cyan"
+
+[git_status]
+format = " ([\\[$all_status\\]]($style))"
+style = "yellow"
+
+[status]
+format = " [\\[$status\\]]($style)"
+style = "red"
+disabled = false

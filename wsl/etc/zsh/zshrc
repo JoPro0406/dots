@@ -1,36 +1,47 @@
 #!/usr/bin/env zsh
 
-set -k # comments
-setopt auto_cd # cd by directory name
-unsetopt flowcontrol # disable <C-S> + <C-Q>
+source ~/usr/git/znap/zsh-snap/znap.zsh
 
-# Keybinds
-bindkey '^[[1;5C'  forward-word           # Ctrl-RightArrow
-bindkey '^[[1;5D'  backward-word          # Ctrl-LeftArrow
-
-# History
-setopt histignorespace
-setopt extended_history
-setopt hist_ignore_dups
-setopt share_history
-
-# Autocompletion
-setopt NO_NOMATCH   # disable some globbing
-setopt complete_in_word
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu select
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' matcher-list \
   'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 fpath=($ZDOTDIR/completions $fpath)
-autoload -U compinit && compinit
+
+zstyle ':znap:*' plugins-dir ~/usr/git/znap
+
+# History
+set -k                  # comments
+setopt histignorespace
+setopt extended_history
+setopt hist_ignore_dups
+setopt share_history
+setopt auto_cd          # cd by directory name
+unsetopt flowcontrol    # disable <C-S> + <C-Q>
+
+# Autocompletion
+setopt NO_NOMATCH       # disable some globbing
+setopt complete_in_word
 
 # Plugins
-source <(antibody init)
-antibody bundle zsh-users/zsh-autosuggestions
-antibody bundle zsh-users/zsh-completions
-# antibody bundle zsh-users/zsh-syntax-highlighting
-antibody bundle zdharma/fast-syntax-highlighting
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-completions
+znap source zsh-users/zsh-history-substring-search
+znap source zdharma/fast-syntax-highlighting
+
+# Keybinds
+bindkey '^[[H'  beginning-of-line              # Home
+bindkey '^[[F'  end-of-line                    # End
+bindkey '^[[2~' overwrite-mode                 # Insert
+bindkey '^[[3~' delete-char                    # Delete
+bindkey '^[[A'  up-line-or-history             # ArrowUp
+bindkey '^[[B'  down-line-or-history           # ArrowDown
+bindkey '^[[D'  backward-char                  # ArrowLeft
+bindkey '^[[C'  forward-char                   # ArrowRight
+bindkey '^[[5~' beginning-of-buffer-or-history # PageUp
+bindkey '^[[6~' end-of-buffer-or-history       # PageDown
+bindkey '^[[Z'  reverse-menu-complete          # S-Tab
 
 # Aliases
 . $ZDOTDIR/aliases
@@ -42,3 +53,4 @@ antibody bundle zdharma/fast-syntax-highlighting
 
 # Prompt
 . $ZDOTDIR/prompt.zsh
+# eval "$(starship init zsh)"
