@@ -26,8 +26,9 @@ function _my_prompt() {
   local exit_code="$?"
   local upper_line=""
   upper_line+="$(git_status blue cyan yellow)"
+  [ -n "$upper_line" ] && upper_line+=" "
   if [ "$exit_code" != 0 ]; then
-    upper_line+=" %F{red}[ %B$exit_code%b ]%f"
+    upper_line+="%F{red}[ %B$exit_code%b ]%f"
   fi
   if [ -n "$upper_line" ]; then
     echo -n "$upper_line"
