@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 dir() {
   local CUTOFF=1
   local IFS=/
@@ -16,26 +18,27 @@ git_status() {
   local BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\s*\(.*\)/\1/')
 
   if [ -n "$BRANCH" ]; then
-    echo -n "%F{$1}[%f %F{$2}$BRANCH%f"
+    echo -n "%F{$1}[%f%F{$2}$BRANCH%f"
     [ -n "$(git status --short)" ] && echo -n " %F{$3}*%f"
-    echo -n " %F{$1}]%f"
+    echo -n "%F{$1}]%f"
   fi
 }
 
 function _my_prompt() {
   local exit_code="$?"
+  subsystemctl is-inside && main_colour="$2" || main_colour="$1"
   local upper_line=""
-  upper_line+="$(git_status blue cyan yellow)"
+  upper_line+="$(git_status $main_colour cyan yellow)"
   [ -n "$upper_line" ] && upper_line+=" "
   if [ "$exit_code" != 0 ]; then
-    upper_line+="%F{red}[ %B$exit_code%b ]%f"
+    upper_line+="%F{red}[%B$exit_code%b]%f"
   fi
   if [ -n "$upper_line" ]; then
     echo -n "$upper_line"
     echo
   fi
-  echo -n "$(dir blue) %B%F{blue}|%f%b "
+  echo -n "$(dir $main_colour) %B%F{$main_colour}|%f%b "
 }
 
 setopt prompt_subst
-PS1='$(_my_prompt)'
+PS1='$(_my_prompt blue green)'

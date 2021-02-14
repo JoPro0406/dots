@@ -3,9 +3,6 @@ local hv = require('helpful.vim')
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax enable')
 
-vim.g.ayucolor = 'dark'
-vim.cmd('colorscheme ayu')
-
 local indent = 2
 hv.setoption({
   background    = 'dark',
@@ -19,6 +16,8 @@ hv.setoption({
   laststatus    = 2,
   showtabline   = 2,
   showmode      = false,
+  foldmethod    = 'indent',
+  foldlevel     = 99,
 
   tabstop       = indent,
   softtabstop   = indent,

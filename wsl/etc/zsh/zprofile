@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 # stolen from willeccles/cpm, switched doas and sudo
 SUDO=
@@ -10,4 +10,13 @@ elif [ "$(whoami)" != root ]; then
     SUDO='su root -c '\''"$@"'\'' -- -'
 fi
 
-$SUDO reflector -p http -p https -l 16 -f 8 --sort rate --save /etc/pacman.d/mirrorlist
+if ! subsystemctl is-running; then
+  echo -n "Start systemd bottle? [y/N]: "
+  read -t 3 -qr yn
+  echo
+
+  if [[ $yn = "y" ]]; then
+    echo "Entering bottle:"
+    $SUDO subsystemctl start
+  fi
+fi

@@ -16,14 +16,11 @@ return require('packer').startup(function()
   use { 'aca/completion-tabnine', run = './install.sh', requires = 'nvim-lua/completion-nvim' }
   use { 'nathunsmitty/nvim-ale-diagnostic', requires = 'dense-analysis/ale' }
 
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use { 'euclidianAce/BetterLua.vim', ft = 'lua' }
   use { 'LnL7/vim-nix', ft = 'nix' }
   use { 'iamcco/markdown-preview.nvim', run = ':call mkdp#util#install()', ft = 'markdown' }
 
   use 'norcalli/nvim-colorizer.lua'
   use 'jiangmiao/auto-pairs'
-  use 'Yggdroot/indentLine'
   use { 'godlygeek/tabular', cmd = { 'Tab', 'Tabularize' } }
   use 'liuchengxu/vim-which-key'
   use 'tpope/vim-surround'
@@ -34,10 +31,14 @@ return require('packer').startup(function()
   use { 'nvim-telescope/telescope-packer.nvim', requires = 'nvim-telescope/telescope.nvim' }
   use { 'junegunn/goyo.vim', requires = 'junegunn/limelight.vim', cmd = 'Goyo' }
 
+  -- stylish {{{
   use { 'glepnir/dashboard-nvim', requires = 'nvim-telescope/telescope.nvim' }
-  use 'itchyny/lightline.vim'
-  use { 'mengelbrecht/lightline-bufferline', requires = 'itchyny/lightline.vim' }
-  use { 'maximbaz/lightline-ale', requires = 'itchyny/lightline.vim' }
-
+  -- use { 'itchyny/lightline.vim', requires = { 'mengelbrecht/lightline-bufferline', 'maximbaz/lightline-ale' } }
+  use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
+  use { 'romgrk/barbar.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
+  use 'Yggdroot/indentLine'
+  use { 'euclidianAce/BetterLua.vim', ft = 'lua' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'ayu-theme/ayu-vim', as = 'ayu' }
+  -- }}}
 end)

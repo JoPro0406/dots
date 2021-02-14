@@ -28,75 +28,9 @@ hv.setglobal({
   NERDSpaceDelims = 1,
   NERDCommentEmptyLines = 1,
   NERDTrimTrailingWhitespace = 1,
-
-  dashboard_custom_header ={
-  '⡿⠋⠄⣀⣀⣤⣴⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣌⠻⣿⣿',
-  '⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠹⣿',
-  '⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠹',
-  '⣿⣿⡟⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡛⢿⣿⣿⣿⣮⠛⣿⣿⣿⣿⣿⣿⡆',
-  '⡟⢻⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣣⠄⡀⢬⣭⣻⣷⡌⢿⣿⣿⣿⣿⣿',
-  '⠃⣸⡀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠈⣆⢹⣿⣿⣿⡈⢿⣿⣿⣿⣿',
-  '⠄⢻⡇⠄⢛⣛⣻⣿⣿⣿⣿⣿⣿⣿⣿⡆⠹⣿⣆⠸⣆⠙⠛⠛⠃⠘⣿⣿⣿⣿',
-  '⠄⠸⣡⠄⡈⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠁⣠⣉⣤⣴⣿⣿⠿⠿⠿⡇⢸⣿⣿⣿',
-  '⠄⡄⢿⣆⠰⡘⢿⣿⠿⢛⣉⣥⣴⣶⣿⣿⣿⣿⣻⠟⣉⣤⣶⣶⣾⣿⡄⣿⡿⢸',
-  '⠄⢰⠸⣿⠄⢳⣠⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣼⣿⣿⣿⣿⣿⣿⡇⢻⡇⢸',
-  '⢷⡈⢣⣡⣶⠿⠟⠛⠓⣚⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⢸⠇⠘',
-  '⡀⣌⠄⠻⣧⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠛⠛⠛⢿⣿⣿⣿⣿⣿⡟⠘⠄⠄',
-  '⣷⡘⣷⡀⠘⣿⣿⣿⣿⣿⣿⣿⣿⡋⢀⣠⣤⣶⣶⣾⡆⣿⣿⣿⠟⠁⠄⠄⠄⠄',
-  '⣿⣷⡘⣿⡀⢻⣿⣿⣿⣿⣿⣿⣿⣧⠸⣿⣿⣿⣿⣿⣷⡿⠟⠉⠄⠄⠄⠄⡄⢀',
-  '⣿⣿⣷⡈⢷⡀⠙⠛⠻⠿⠿⠿⠿⠿⠷⠾⠿⠟⣛⣋⣥⣶⣄⠄⢀⣄⠹⣦⢹⣿',
-  },
-  dashboard_default_executive = 'telescope',
-  dashboard_custom_shortcut = {
-    last_session = 'SPC s l',
-    find_history = 'SPC f h',
-    find_file = 'SPC f f',
-    new_file = 'SPC n f',
-    change_colorscheme = 'SPC t c',
-    find_word = 'SPC f a',
-    book_marks = 'SPC f b'
-  },
-
-  lightline = {
-    colorscheme = 'ayu_dark',
-    active = {
-      left = {{ 'mode', 'paste' }, { 'gitbranch', 'filename' }},
-      right = {
-        { 'lineinfo' },
-        { 'liner_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' },
-        { 'fileformat', 'fileencoding', 'filetype' }
-      }
-    },
-    tabline = {
-      left = {{ 'buffers' }},
-      right = {{ 'close' }}
-    },
-    component_function = {
-      gitbranch = 'FugitiveHead'
-    },
-    component_expand = {
-      buffers = 'lightline#bufferline#buffers',
-      linter_checking = 'lightline#ale#checking',
-      linter_infos = 'lightline#ale#infos',
-      linter_warnings = 'lightline#ale#warnings',
-      linter_errors = 'lightline#ale#errors',
-      linter_ok = 'lightline#ale#ok'
-    },
-    component_type = {
-      buffers = 'tabsel',
-      linter_checking = 'right',
-      linter_infos = 'right',
-      linter_warnings = 'warning',
-      linter_errors = 'error',
-      linter_ok = 'right'
-    }
-  }
 })
 
-vim.cmd([[let g:dashboard_default_header = 'commicgirl15']])
-
 vim.cmd([[let g:ale_fixers = { '*': [ 'remove_trailing_lines', 'trim_whitespace'  ] }]])
-vim.cmd([[autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2]])
 
 vim.cmd([[autocmd! User GoyoEnter Limelight]])
 vim.cmd([[autocmd! User GoyoLeave Limelight!]])
