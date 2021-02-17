@@ -12,6 +12,8 @@ hv.setglobal({
       {mode = '<c-n>'}
     }
   },
+  completion_tabnine_max_num_results = 2,
+
   ale_disable_lsp = 1,
   ale_fix_on_save = 1,
   -- ale_fixers   = { -- fix at bottom

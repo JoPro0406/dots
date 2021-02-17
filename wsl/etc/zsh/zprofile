@@ -16,7 +16,10 @@ if ! subsystemctl is-running; then
   echo
 
   if [[ $yn = "y" ]]; then
-    echo "Entering bottle:"
+    echo "Starting bottle:"
     $SUDO subsystemctl start
   fi
 fi
+
+bg() { ("$@" &) >/dev/null 2>&1; }
+bg rmd

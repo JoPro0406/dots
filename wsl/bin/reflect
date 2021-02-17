@@ -3,11 +3,11 @@
 # stolen from willeccles/cpm, switched doas and sudo
 SUDO=
 if command -v doas >/dev/null && [ -f /etc/doas.conf ]; then
-    SUDO=doas
+  SUDO=doas
 elif command -v sudo >/dev/null; then
-    SUDO=sudo
+  SUDO=sudo
 elif [ "$(whoami)" != root ]; then
-    SUDO='su root -c '\''"$@"'\'' -- -'
+  SUDO='su root -c '\''"$@"'\'' -- -'
 fi
 
 $SUDO reflector -p http -p https -l 16 -f 8 --sort rate --save /etc/pacman.d/mirrorlist

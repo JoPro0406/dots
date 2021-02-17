@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-source ~/usr/git/znap/zsh-snap/znap.zsh
+source ~/src/znap/zsh-snap/znap.zsh
 
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu select
@@ -54,3 +54,5 @@ bindkey '^[[Z'  reverse-menu-complete          # S-Tab
 # Prompt
 . $ZDOTDIR/prompt.zsh
 # eval "$(starship init zsh)"
+
+znap eval ls-colors 'dircolors $data/LS_COLORS'

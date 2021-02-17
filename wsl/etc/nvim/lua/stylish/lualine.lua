@@ -1,7 +1,10 @@
 local lualine = require('lualine')
 
-lualine.theme = 'ayu_dark'
-lualine.seperator = '|'
+lualine.options= {
+  theme = 'ayu_dark',
+  seperator = '|',
+  icons_enabled = true,
+}
 lualine.sections = {
   lualine_a = { 'mode' },
   lualine_b = { 'branch', 'signify' },

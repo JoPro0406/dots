@@ -7,7 +7,8 @@ hv.noremap('v', '<Leader>', ":<c-u>WhichKeyVisual '<Space>'<CR>", { silent = tru
 
 hv.noremap('n', '<Leader>l', ':bnext<CR>')
 hv.noremap('n', '<Leader>h', ':bprevious<CR>')
-hv.noremap('n', '<Leader>w', ':bwipeout<CR>')
+hv.noremap('n', '<Leader>q', ':bwipeout<CR>')
+hv.noremap('n', '<Leader>w', ':w<CR>')
 
 hv.noremap('n', '<Leader>G', ':Goyo<CR>')
 

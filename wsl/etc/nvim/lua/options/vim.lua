@@ -5,7 +5,6 @@ vim.cmd('syntax enable')
 
 local indent = 2
 hv.setoption({
-  background    = 'dark',
   scrolloff     = 1,
   cursorline    = true,
   mouse         = 'a',

@@ -1,9 +1,9 @@
 local hv = require('helpful.vim')
 
 barbar = {
-  animation = false,
+  animation = true,
 
-  auto_hide = true,
+  auto_hide = false,
 
   icons = true,
   icon_separator_active = '▎',

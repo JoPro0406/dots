@@ -39,6 +39,6 @@ return require('packer').startup(function()
   use 'Yggdroot/indentLine'
   use { 'euclidianAce/BetterLua.vim', ft = 'lua' }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use { 'ayu-theme/ayu-vim', as = 'ayu' }
+  use { 'Luxed/ayu-vim', as = 'ayu' }
   -- }}}
 end)

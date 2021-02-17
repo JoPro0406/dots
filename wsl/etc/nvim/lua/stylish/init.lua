@@ -1,7 +1,14 @@
+local hv = require('helpful.vim')
+
 require('stylish.dashboard')
 require('stylish.barbar')
 require('stylish.lualine')
 require('stylish.treesitter')
 
-vim.g.ayucolor = 'dark'
+hv.setglobal({
+  ayucolor = 'dark',
+  ayu_italic_comment = 1,
+})
+hv.setoption({ background = 'dark' })
+
 vim.cmd('colorscheme ayu')

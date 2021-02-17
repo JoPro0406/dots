@@ -1,6 +1,7 @@
 export conf="$HOME/etc"
 export data="$HOME/var"
 export cache="$HOME/var/cache"
+export dots="$HOME/src/dots"
 
 export XDG_CONFIG_HOME="$conf"
 export XDG_DATA_HOME="$data"
@@ -14,7 +15,6 @@ export PATH="$HOME/bin":$PATH
 export PATH="$HOME/usr/bin":$PATH
 export PATH="$data/cargo/bin":$PATH
 
-export DOTS="$HOME/usr/git/dots"
 export STARSHIP_CONFIG="$conf/starship.toml"
 export STARSHIP_CACHE="$cache"
 
