@@ -49,4 +49,5 @@ hv.setglobal({
   netrw_liststyle = 3,
   netrw_browse_split = 4,
   netrw_winsize = 20,
+  netrw_home = vim.fn.stdpath('data')
 })

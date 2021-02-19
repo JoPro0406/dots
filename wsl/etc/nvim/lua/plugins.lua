@@ -12,12 +12,14 @@ return require('packer').startup(function()
 
   use 'dense-analysis/ale'
   use 'neovim/nvim-lspconfig'
+  use { 'nvim-lua/lsp_extensions.nvim', requires = 'nvim-lspconfig' }
   use 'nvim-lua/completion-nvim'
   use { 'aca/completion-tabnine', run = './install.sh', requires = 'nvim-lua/completion-nvim' }
   use { 'nathunsmitty/nvim-ale-diagnostic', requires = 'dense-analysis/ale' }
 
   use { 'LnL7/vim-nix', ft = 'nix' }
   use { 'iamcco/markdown-preview.nvim', run = ':call mkdp#util#install()', ft = 'markdown' }
+  use { 'rust-lang/rust.vim' }
 
   use 'norcalli/nvim-colorizer.lua'
   use 'jiangmiao/auto-pairs'
@@ -34,7 +36,7 @@ return require('packer').startup(function()
   -- stylish {{{
   use { 'glepnir/dashboard-nvim', requires = 'nvim-telescope/telescope.nvim' }
   -- use { 'itchyny/lightline.vim', requires = { 'mengelbrecht/lightline-bufferline', 'maximbaz/lightline-ale' } }
-  use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
+  use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }, commit = 'ec55986f3eea8064d723514ac04b2f89cd8ac565' }
   use { 'romgrk/barbar.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
   use 'Yggdroot/indentLine'
   use { 'euclidianAce/BetterLua.vim', ft = 'lua' }

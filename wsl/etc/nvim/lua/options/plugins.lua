@@ -12,7 +12,7 @@ hv.setglobal({
       {mode = '<c-n>'}
     }
   },
-  completion_tabnine_max_num_results = 2,
+  completion_tabnine_max_num_results = 7,
 
   ale_disable_lsp = 1,
   ale_fix_on_save = 1,
@@ -32,7 +32,7 @@ hv.setglobal({
   NERDTrimTrailingWhitespace = 1,
 })
 
-vim.cmd([[let g:ale_fixers = { '*': [ 'remove_trailing_lines', 'trim_whitespace'  ] }]])
+vim.cmd([[let g:ale_fixers = { '*': [ 'remove_trailing_lines', 'trim_whitespace' ] }]])
 
 vim.cmd([[autocmd! User GoyoEnter Limelight]])
 vim.cmd([[autocmd! User GoyoLeave Limelight!]])
