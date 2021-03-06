@@ -35,7 +35,8 @@ local headers = {
     ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
     ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
   }
-} -- }}}
+}
+-- }}}
 
 hv.setglobal({
   dashboard_custom_header = headers.ayaya,

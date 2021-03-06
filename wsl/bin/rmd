@@ -1,5 +1,7 @@
 #!/bin/sh
 
+[ "$(pgrep -x rmd)" = "$$"  ] || exit
+
 while :; do
   set --
   for dir in ~/.cache ~/.local ~/.config ~/go ~/.cargo ~/.npm ~/.bash* ~/.viminfo; do
