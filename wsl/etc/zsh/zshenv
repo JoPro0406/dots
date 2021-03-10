@@ -30,3 +30,5 @@ export GOPATH="$cache/go"
 
 export RUSTUP_HOME="$data/rustup"
 export CARGO_HOME="$data/cargo"
+
+export BTPD_HOME="$data/btpd"

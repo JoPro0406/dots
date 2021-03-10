@@ -34,15 +34,14 @@ return require('packer').startup(function()
   use 'mhinz/vim-signify'
   use 'tpope/vim-repeat'
   use 'preservim/nerdcommenter'
-  use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' } }
+  use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' } }
   use { 'junegunn/goyo.vim', requires = 'junegunn/limelight.vim', cmd = 'Goyo' }
 
   -- stylish {{{
   use { 'glepnir/dashboard-nvim', requires = 'nvim-telescope/telescope.nvim' }
-  -- use { 'itchyny/lightline.vim', requires = { 'mengelbrecht/lightline-bufferline', 'maximbaz/lightline-ale' } }
-  use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
-  use { 'romgrk/barbar.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
-  use 'Yggdroot/indentLine'
+  use { 'hoob3rt/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' }
+  use { 'romgrk/barbar.nvim', requires = 'kyazdani42/nvim-web-devicons' }
+  use 'glepnir/indent-guides.nvim'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'Luxed/ayu-vim', as = 'ayu' }
   -- }}}
