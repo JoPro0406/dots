@@ -11,7 +11,7 @@ hv.setoption({ -- {{{
 
   laststatus     = 2,
   showtabline    = 2,
-  signcolumn     = 'auto',
+  signcolumn     = 'number',
   number         = true,
   cursorline     = true,
   showmode       = false,
@@ -48,7 +48,7 @@ vim.bo.softtabstop    = indent
 vim.bo.shiftwidth     = indent
 vim.bo.smartindent    = true
 vim.bo.expandtab      = true
-vim.wo.signcolumn     = 'auto'
+vim.wo.signcolumn     = 'number'
 vim.wo.number         = true
 vim.wo.cursorline     = true
 vim.wo.wrap           = true

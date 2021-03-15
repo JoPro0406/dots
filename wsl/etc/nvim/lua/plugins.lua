@@ -25,7 +25,7 @@ return require('packer').startup(function()
   use { 'euclidianAce/BetterLua.vim', ft = 'lua' }
   -- }}}
 
-  use 'norcalli/nvim-colorizer.lua'
+  -- useful {{{
   use 'jiangmiao/auto-pairs'
   use { 'godlygeek/tabular', cmd = { 'Tab', 'Tabularize' } }
   use 'liuchengxu/vim-which-key'
@@ -34,14 +34,16 @@ return require('packer').startup(function()
   use 'mhinz/vim-signify'
   use 'tpope/vim-repeat'
   use 'preservim/nerdcommenter'
-  use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' } }
-  use { 'junegunn/goyo.vim', requires = 'junegunn/limelight.vim', cmd = 'Goyo' }
+  -- }}}
 
   -- stylish {{{
-  use { 'glepnir/dashboard-nvim', requires = 'nvim-telescope/telescope.nvim' }
+  use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' } }
+  use { 'glepnir/dashboard-nvim' }
   use { 'hoob3rt/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' }
   use { 'romgrk/barbar.nvim', requires = 'kyazdani42/nvim-web-devicons' }
   use 'glepnir/indent-guides.nvim'
+  use 'norcalli/nvim-colorizer.lua'
+  use { 'junegunn/goyo.vim', requires = 'junegunn/limelight.vim', cmd = 'Goyo' }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'Luxed/ayu-vim', as = 'ayu' }
   -- }}}
