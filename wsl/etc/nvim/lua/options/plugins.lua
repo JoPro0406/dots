@@ -5,15 +5,6 @@ hv.setoption({ -- {{{
 }) -- }}}
 
 hv.setglobal({ -- {{{
-  completion_chain_complete_list = {
-    default = {
-      { complete_items = { 'lsp', 'snippet', 'tabnine' } },
-      { mode = '<c-p>' },
-      { mode = '<c-n>' }
-    }
-  },
-  completion_tabnine_max_num_results = 3,
-
   ale_lint_on_text_changed = 'always',
   ale_disable_lsp = 1,
   ale_fix_on_save = 1,

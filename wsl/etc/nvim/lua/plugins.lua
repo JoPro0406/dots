@@ -13,8 +13,8 @@ return require('packer').startup(function()
   use 'dense-analysis/ale'
   use 'neovim/nvim-lspconfig'
   use { 'nvim-lua/lsp_extensions.nvim', requires = 'nvim-lspconfig' }
-  use 'nvim-lua/completion-nvim'
-  use { 'aca/completion-tabnine', run = './install.sh', requires = 'nvim-lua/completion-nvim' }
+  -- use 'nvim-lua/completion-nvim'
+  -- use { 'aca/completion-tabnine', run = './install.sh', requires = 'nvim-lua/completion-nvim' }
   use { 'nathunsmitty/nvim-ale-diagnostic', requires = 'dense-analysis/ale' }
   -- }}}
 
