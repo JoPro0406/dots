@@ -13,14 +13,18 @@ function M.setglobal(globalTable)
 end
 
 function M.map(mode, lhs, rhs, opts)
-  local options = {}
-  if opts then options = vim.tbl_extend('force', options, opts) end
+  local options = { silent = true }
+  if opts then
+    options = vim.tbl_extend('force', options, opts)
+  end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 function M.noremap(mode, lhs, rhs, opts)
-  local options = { noremap = true }
-  if opts then options = vim.tbl_extend('force', options, opts) end
+  local options = { noremap = true, silent = true }
+  if opts then
+    options = vim.tbl_extend('force', options, opts)
+  end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 

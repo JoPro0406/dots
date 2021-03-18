@@ -12,6 +12,8 @@ hv.noremap('n', '<Leader>h', ':bprevious<CR>', { silent = true })
 
 hv.noremap('n', '<Leader>G', ':Goyo<CR>', { silent = true })
 
+hv.noremap('n', '<M-F>', ':Format<CR>', { silent = false })
+
 hv.noremap('n', '<Leader>fh', ':DashboardFindHistory<CR>', { silent = true })
 hv.noremap('n', '<Leader>ff', ':DashboardFindFile<CR>', { silent = true })
 hv.noremap('n', '<Leader>tc', ':DashboardChangeColorscheme<CR>', { silent = true })

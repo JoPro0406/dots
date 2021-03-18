@@ -1,5 +1,5 @@
 require('plugins')
 require('keys')
 require('options')
-require('lsp')
+require('magic')
 require('stylish')
