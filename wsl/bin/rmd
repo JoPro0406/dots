@@ -4,7 +4,7 @@
 
 while :; do
   set --
-  for dir in ~/.cache ~/.local ~/.config ~/go ~/.cargo ~/.npm ~/.bash* ~/.viminfo ~/Desktop ~/Documents ~/Downloads ~/Music ~/Pictures ~/Public ~/Templates ~/Videos; do
+  for dir in ~/.cache ~/.local ~/.config ~/go ~/.cargo ~/.npm ~/.bash* ~/.viminfo ~/.tree-sitter ~/Desktop ~/Documents ~/Downloads ~/Music ~/Pictures ~/Public ~/Templates ~/Videos; do
     [ -e "$dir" ] && set -- "$@" "$dir"
   done
   [ "$1" ] && rm -rf -- "$@"

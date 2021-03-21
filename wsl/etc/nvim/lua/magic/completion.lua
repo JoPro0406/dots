@@ -14,19 +14,19 @@ require'compe'.setup {
   max_menu_width = 100,
   documentation = true,
   source = {
-    path = true,
     buffer = true,
+    path = true,
+    tags = true,
+    spell = true,
     calc = true,
-    vsnip = true,
     nvim_lsp = true,
     nvim_lua = true,
-    spell = true,
-    tags = true,
-    snippets_nvim = true,
+    vsnip = true,
     treesitter = true,
   },
 }
 
+-- helpers {{{
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -39,38 +39,64 @@ local check_back_space = function()
     return false
   end
 end
+-- }}}
 
--- snippets.nvim tab completion {{{
-_G.tab_complete = function()
+Completion = {}
+-- vsnip tab completion {{{
+Completion.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t '<C-n>'
-  elseif require('snippets').has_active_snippet() == true then
-    return t "<cmd>lua return require('snippets').expand_or_advance(1)<CR>"
+  elseif vim.fn.call('vsnip#available', { 1 }) == 1 then
+    return t '<Plug>(vsnip-expand-or-jump)'
   elseif check_back_space() then
     return t '<Tab>'
   else
     return vim.fn['compe#complete']()
   end
 end
-_G.s_tab_complete = function()
+Completion.s_tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t '<C-p>'
-  elseif require('snippets').has_active_snippet() == true then
-    return t "<cmd>lua return require('snippets').advance_snippet(-1)<CR>"
+  elseif vim.fn.call('vsnip#jumpable', { -1 }) == 1 then
+    return t '<Plug>(vsnip-jump-prev)'
   else
     return t '<S-Tab>'
   end
 end
 -- }}}
 
-hv.map('s', '<Tab>', 'v:lua.tab_complete()', { expr = true })
-hv.map('i', '<Tab>', 'v:lua.tab_complete()', { expr = true })
-hv.map('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
-hv.map('i', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+-- autopairs <CR> support {{{
+local npairs = require('nvim-autopairs')
+vim.g.completion_confirm_key = ''
+Completion.autopairs_completion = function()
+  if vim.fn.pumvisible() ~= 0 then
+    if vim.fn.complete_info()['selected'] ~= -1 then
+      vim.fn['compe#confirm']()
+      return npairs.esc('<c-y>')
+    else
+      vim.defer_fn(
+        function()
+          vim.fn['compe#confirm']('<cr>')
+        end, 20
+      )
+      return npairs.esc('<c-n>')
+    end
+  else
+    return npairs.check_break_line_char()
+  end
+end
+-- }}}
+
+hv.map('s', '<Tab>', 'v:lua.Completion.tab_complete()', { expr = true })
+hv.map('i', '<Tab>', 'v:lua.Completion.tab_complete()', { expr = true })
+hv.map('s', '<S-Tab>', 'v:lua.Completion.s_tab_complete()', { expr = true })
+hv.map('i', '<S-Tab>', 'v:lua.Completion.s_tab_complete()', { expr = true })
 
 hv.noremap('i', '<C-Space>', 'compe#complete()', { expr = true })
-hv.noremap('i', '<CR>', "compe#confirm('<CR>')", { expr = true })
-hv.noremap('i', '<C-e>', "'compe#close('<C-e>')", { expr = true })
+hv.noremap(
+  'i', '<CR>', 'v:lua.Completion.autopairs_completion()', { expr = true }
+)
+hv.noremap('i', '<C-e>', "compe#close('<C-e>')", { expr = true })
 hv.noremap('i', '<C-f>', "compe#scroll({ 'delta': +4 })", { expr = true })
 hv.noremap('i', '<C-d>', "compe#scroll({ 'delta': -4 })", { expr = true })
 

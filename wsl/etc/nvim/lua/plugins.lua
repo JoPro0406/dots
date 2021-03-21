@@ -15,11 +15,12 @@ return require('packer').startup(
     -- use 'tweekmonster/startuptime.vim'
 
     -- lsp etc {{{
+    use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end }
     use 'neovim/nvim-lspconfig'
     use 'nvim-lua/lsp_extensions.nvim'
     use 'hrsh7th/nvim-compe'
-    -- use 'hrsh7th/vim-vsnip'
-    use 'norcalli/snippets.nvim'
+    -- use 'norcalltruei/snippets.nvim'
+    use 'hrsh7th/vim-vsnip'
     use 'onsails/lspkind-nvim'
     use 'mhartington/formatter.nvim'
     -- }}}
@@ -32,11 +33,9 @@ return require('packer').startup(
       ft = 'markdown',
     }
     use { 'rust-lang/rust.vim', ft = 'rust' }
-    use { 'euclidianAce/BetterLua.vim', ft = 'lua' }
     -- }}}
 
     -- quality of life {{{
-    use 'jiangmiao/auto-pairs'
     use { 'godlygeek/tabular', cmd = { 'Tab', 'Tabularize' } }
     use 'liuchengxu/vim-which-key'
     use 'tpope/vim-surround'
@@ -44,6 +43,7 @@ return require('packer').startup(
     use 'mhinz/vim-signify'
     use 'tpope/vim-repeat'
     use 'preservim/nerdcommenter'
+    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     -- }}}
 
     -- stylish {{{
@@ -54,15 +54,17 @@ return require('packer').startup(
         'nvim-lua/plenary.nvim',
         'kyazdani42/nvim-web-devicons',
       },
+      config = function() require('stylish.telescope') end
     }
-    use { 'glepnir/dashboard-nvim' }
-    use { 'hoob3rt/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' }
-    use { 'romgrk/barbar.nvim', requires = 'kyazdani42/nvim-web-devicons' }
-    use 'glepnir/indent-guides.nvim'
-    use 'norcalli/nvim-colorizer.lua'
+    use { 'glepnir/dashboard-nvim', config = function() require('stylish.dashboard') end }
+    use { 'hoob3rt/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons', config = function() require('stylish.lualine') end }
+    -- use { 'romgrk/barbar.nvim', requires = 'kyazdani42/nvim-web-devicons', config = function() require('stylish.barbar') end }
+    use { 'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons' , config = function() require('stylish.bufferline') end }
+    use { 'glepnir/indent-guides.nvim',config = function() require('stylish.indentguides') end }
+    use { 'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end }
     use { 'junegunn/goyo.vim', requires = 'junegunn/limelight.vim',
           cmd = 'Goyo' }
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function() require('stylish.treesitter') end}
     use { 'Luxed/ayu-vim', as = 'ayu' }
     -- }}}
   end

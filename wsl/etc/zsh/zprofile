@@ -3,22 +3,16 @@
 # stolen from willeccles/cpm, switched doas and sudo
 SUDO=
 if command -v doas >/dev/null && [ -f /etc/doas.conf ]; then
-    SUDO=doas
+  SUDO=doas
 elif command -v sudo >/dev/null; then
-    SUDO=sudo
+  SUDO=sudo
 elif [ "$(whoami)" != root ]; then
-    SUDO='su root -c '\''"$@"'\'' -- -'
+  SUDO='su root -c '\''"$@"'\'' -- -'
 fi
 
 if ! subsystemctl is-running; then
-  echo -n "Start systemd bottle? [y/N]: "
-  read -t 3 -qr yn
-  echo
-
-  if [[ $yn = "y" ]]; then
-    echo "Starting bottle:"
-    $SUDO subsystemctl start
-  fi
+  echo "Starting bottle:"
+  $SUDO subsystemctl start
 fi
 
 bg() { ("$@" &) >/dev/null 2>&1; }

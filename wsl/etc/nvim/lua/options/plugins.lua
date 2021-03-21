@@ -32,5 +32,3 @@ vim.api.nvim_exec(
 
 vim.api.nvim_exec([[autocmd! User GoyoEnter Limelight]], true)
 vim.api.nvim_exec([[autocmd! User GoyoLeave Limelight!]], true)
-
-require('colorizer').setup()

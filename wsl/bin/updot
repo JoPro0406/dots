@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd "$DOTS" || exit
+cd "$dots" || exit
 
 [ -z "$*" ] && msg="updot" || msg="$*"
 

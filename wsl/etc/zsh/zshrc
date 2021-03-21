@@ -7,6 +7,7 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' matcher-list \
   'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+
 fpath=($ZDOTDIR/completions $fpath)
 
 zstyle ':znap:*' plugins-dir ~/usr/git/znap

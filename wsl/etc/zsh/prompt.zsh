@@ -6,6 +6,7 @@ dir() {
   local my_path=($(print -P '%~'))
   local p
   echo -n "%B%F{$1}"
+  [ "${my_path[0,1]}" != "~" ] && echo -n "/"
   for p in $my_path; do
     echo -n "${s}${p[0,$CUTOFF]}"
     local s=/

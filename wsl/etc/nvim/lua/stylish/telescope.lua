@@ -1,7 +1,8 @@
 require('telescope').setup {
   defaults = {
-    prompt_position = "bottom",
+    prompt_position = "top",
     layout_strategy = "horizontal",
+    sorting_strategy = 'ascending',
     layout_defaults = {
       horizontal = { mirror = false },
       vertical = { mirror = false },
