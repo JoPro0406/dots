@@ -1,1 +1,1 @@
-require('snippets').snippets = { _global = { test = "test lul xd" } }
+require('snippets').snippets = { _global = { test = 'test lul xd' } }

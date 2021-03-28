@@ -18,11 +18,9 @@ require'compe'.setup {
     path = true,
     tags = true,
     spell = true,
-    calc = true,
     nvim_lsp = true,
     nvim_lua = true,
     vsnip = true,
-    treesitter = true,
   },
 }
 

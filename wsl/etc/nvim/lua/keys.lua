@@ -11,8 +11,9 @@ hv.noremap(
   'v', '<Leader>', ":<c-u>WhichKeyVisual '<Space>'<CR>", { silent = true }
 )
 
-hv.noremap('n', '<Leader>l', ':bnext<CR>', { silent = true })
-hv.noremap('n', '<Leader>h', ':bprevious<CR>', { silent = true })
+hv.noremap('n', '<Leader>bn', ':bnext<CR>', { silent = true })
+hv.noremap('n', '<Leader>bp', ':bprevious<CR>', { silent = true })
+hv.noremap('n', '<Leader>bw', ':bwipeout<CR>', { silent = true })
 
 hv.noremap('n', '<Leader>G', ':Goyo<CR>', { silent = true })
 

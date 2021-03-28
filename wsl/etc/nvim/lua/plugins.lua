@@ -11,39 +11,64 @@ vim.api.nvim_exec([[packadd packer.nvim]], true) -- {{{
 return require('packer').startup(
   function()
     -- Packer can manage itself as an optional plugin
-      use { 'wbthomason/packer.nvim', opt = true }
+    use {
+      'wbthomason/packer.nvim',
+      opt = true
+    }
     -- use 'tweekmonster/startuptime.vim'
 
     -- lsp etc {{{
-    use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end }
+    use {
+      'windwp/nvim-autopairs',
+      config = function() require('nvim-autopairs').setup() end
+    }
     use 'neovim/nvim-lspconfig'
+    use 'glepnir/lspsaga.nvim'
     use 'nvim-lua/lsp_extensions.nvim'
     use 'hrsh7th/nvim-compe'
-    -- use 'norcalltruei/snippets.nvim'
-    use 'hrsh7th/vim-vsnip'
+    use {
+      'hrsh7th/vim-vsnip',
+      requires = 'hrsh7th/vim-vsnip-integ'
+    }
     use 'onsails/lspkind-nvim'
     use 'mhartington/formatter.nvim'
     -- }}}
 
     -- language plugins {{{
-    use { 'LnL7/vim-nix', ft = 'nix' }
+    use {
+      'LnL7/vim-nix',
+      ft = 'nix'
+    }
     use {
       'iamcco/markdown-preview.nvim',
       run = ':call mkdp#util#install()',
       ft = 'markdown',
     }
-    use { 'rust-lang/rust.vim', ft = 'rust' }
+    use {
+      'rust-lang/rust.vim',
+      ft = 'rust'
+    }
     -- }}}
 
     -- quality of life {{{
-    use { 'godlygeek/tabular', cmd = { 'Tab', 'Tabularize' } }
+    use {
+      'godlygeek/tabular',
+      cmd = { 'Tab', 'Tabularize' }
+    }
     use 'liuchengxu/vim-which-key'
     use 'tpope/vim-surround'
     use 'tpope/vim-fugitive'
-    use 'mhinz/vim-signify'
+    use {
+      'lewis6991/gitsigns.nvim',
+      requires = 'nvim-lua/plenary.nvim',
+      config = function() require('gitsigns').setup { numhl = true } end
+    }
     use 'tpope/vim-repeat'
     use 'preservim/nerdcommenter'
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    use {
+      'TimUntersberger/neogit',
+      requires = 'nvim-lua/plenary.nvim'
+    }
     -- }}}
 
     -- stylish {{{
@@ -56,15 +81,38 @@ return require('packer').startup(
       },
       config = function() require('stylish.telescope') end
     }
-    use { 'glepnir/dashboard-nvim', config = function() require('stylish.dashboard') end }
-    use { 'hoob3rt/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons', config = function() require('stylish.lualine') end }
-    -- use { 'romgrk/barbar.nvim', requires = 'kyazdani42/nvim-web-devicons', config = function() require('stylish.barbar') end }
-    use { 'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons' , config = function() require('stylish.bufferline') end }
-    use { 'glepnir/indent-guides.nvim',config = function() require('stylish.indentguides') end }
-    use { 'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end }
-    use { 'junegunn/goyo.vim', requires = 'junegunn/limelight.vim',
-          cmd = 'Goyo' }
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function() require('stylish.treesitter') end}
+    use {
+      'glepnir/dashboard-nvim',
+      config = function() require('stylish.dashboard') end
+    }
+    use {
+      'glepnir/galaxyline.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+      config = function() require('stylish.galaxyline') end
+    }
+    use {
+      'akinsho/nvim-bufferline.lua',
+      requires = 'kyazdani42/nvim-web-devicons' ,
+      config = function() require('stylish.bufferline') end
+    }
+    use {
+      'glepnir/indent-guides.nvim',
+      config = function() require('stylish.indentguides') end
+    }
+    use {
+      'norcalli/nvim-colorizer.lua',
+      config = function() require('colorizer').setup { '*', '!packer' } end
+    }
+    use {
+      'junegunn/goyo.vim',
+      requires = 'junegunn/limelight.vim',
+      cmd = 'Goyo'
+    }
+    use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate',
+      config = function() require('stylish.treesitter') end
+    }
     use { 'Luxed/ayu-vim', as = 'ayu' }
     -- }}}
   end

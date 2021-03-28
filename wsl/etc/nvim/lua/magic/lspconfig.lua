@@ -14,30 +14,41 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] =
   )
 -- }}}
 
+local saga = require('lspsaga')
+
+saga.init_lsp_saga()
+
 -- on_attach {{{
 local on_attach = function()
   -- Keybindings for LSPs
   hv.noremap(
-    'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { silent = true }
-  )
-  hv.noremap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
-  hv.noremap(
-    'n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>', { silent = true }
+    'n', 'gd', '<cmd>lua require("lspsaga.provider").preview_definition()<CR>',
+    { silent = true }
   )
   hv.noremap(
-    'n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { silent = true }
+    'n', 'gD', '<cmd>lua require("lspsaga.provider").lsp_finder()<CR>',
+    { silent = true }
   )
   hv.noremap(
-    'n', '1gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { silent = true }
+    'n', 'gh', '<cmd>lua require("lspsaga.hover").render_hover_doc()<CR>',
+    { silent = true }
   )
   hv.noremap(
-    'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { silent = true }
+    'n', 'gs', '<cmd>lua require("lspsaga.signaturehelp").signature_help()<CR>',
+    { silent = true }
   )
   hv.noremap(
-    'n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', { silent = true }
+    'n', 'ca', '<cmd>lua require("lspsaga.codeaction").code_action()<CR>',
+    { silent = true }
   )
   hv.noremap(
-    'n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', { silent = true }
+    'v', 'ca',
+    ':<C-U>lua require("lspsaga.codeaction").range_code_action()<CR>',
+    { silent = true }
+  )
+  hv.noremap(
+    'n', 'gr', '<cmd>lua require("lspsaga.rename").rename()<CR>',
+    { silent = true }
   )
 end
 -- }}}
@@ -60,7 +71,7 @@ lspconfig.sumneko_lua.setup(
     settings = {
       Lua = {
         runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
-        diagnostics = { globals = { 'vim', 'use' } },
+        diagnostics = { globals = { 'vim', 'use', 'packer_plugins' } },
         workspace = {
           library = {
             [vim.fn.expand('$VIMRUNTIME/lua')] = true,
