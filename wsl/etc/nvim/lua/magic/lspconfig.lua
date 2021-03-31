@@ -86,3 +86,21 @@ lspconfig.sumneko_lua.setup(
 ) -- }}}
 lspconfig.jsonls.setup { on_attach = on_attach, capabilities = capabilities }
 lspconfig.tsserver.setup { on_attach = on_attach, capabilities = capabilities }
+
+-- lsp_extensions {{{
+
+_G.inlay_hints = function()
+  require('lsp_extensions').inlay_hints {
+    prefix = ' » ',
+    highlight = 'Comment',
+    aligned = false,
+    only_current_line = false,
+    enabled = { 'TypeHint', 'ParameterHint', 'ChainingHint' }
+  }
+end
+
+vim.api.nvim_exec(
+  [[autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua inlay_hints()]], true
+)
+
+-- }}}

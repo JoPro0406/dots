@@ -83,8 +83,8 @@ gls.left = {
       provider = 'FileName',
       condition = glc.buffer_not_empty,
       highlight = { cl 'fg', cl 'bg1' },
-      separator = '▊',
-      separator_highlight = { cl 'yellow', cl 'bg2' },
+      separator = '▐',
+      separator_highlight = { cl 'yellow', cl 'bg1' },
     },
   },
   {
@@ -101,13 +101,15 @@ gls.left = {
       condition = glc.hide_in_width,
       icon = ' 柳 ',
       highlight = { cl 'green', cl 'bg2' },
+      separator = ' ', -- fix for weird space in bar
+      separator_highlight = { 'NONE', cl 'bg2' },
     },
   },
   {
     DiffRemove = {
       provider = 'DiffRemove',
       condition = glc.hide_in_width,
-      icon = '  ',
+      icon = ' ',
       highlight = { cl 'red', cl 'bg2' },
     },
   },
@@ -134,7 +136,7 @@ gls.right = {
   {
     GitBranch = {
       provider = 'GitBranch',
-      icon = '  ',
+      icon = ' ',
       condition = glc.check_git_workspace,
       highlight = { cl 'yellow', cl 'bg2' },
     },

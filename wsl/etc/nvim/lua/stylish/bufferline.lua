@@ -3,6 +3,6 @@ require'bufferline'.setup {
     max_name_length = 32,
     diagnostics = 'nvim_lsp',
     show_close_icon = false,
-    separator_style = 'thin',
+    separator_style = 'thick',
   },
 }

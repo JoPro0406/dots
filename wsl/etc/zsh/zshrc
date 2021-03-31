@@ -56,4 +56,11 @@ bindkey '^[[Z'  reverse-menu-complete          # S-Tab
 . $ZDOTDIR/prompt.zsh
 # eval "$(starship init zsh)"
 
+command_not_found_handler() {
+  printf 'Command not found -> \033[33m%s\033[0m \n' "$0" >&2
+  return 127
+}
+
 znap eval ls-colors 'dircolors $data/LS_COLORS'
+
+# lazy todos

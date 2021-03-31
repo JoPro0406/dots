@@ -3,30 +3,28 @@ local hv = require('helpful.vim')
 hv.setoption({ completeopt = 'menuone,noinsert,noselect' })
 
 hv.setglobal {
-  ale_lint_on_text_changed = 'always',
-  ale_disable_lsp = 1,
-  ale_fix_on_save = 1,
-  ale_linters = {
-    rust = { 'rust-analyzer' },
-    javascript = { 'eslint' },
-    vim = { 'vimls' },
-    markdown = { --[['markdownlint']] },
-  },
-  ale_fixers = { -- '*' fix at bottom
-    rust = { 'rustfmt' },
-    javascript = { 'eslint', 'prettier' },
-    json = { 'jq', 'prettier' },
-  },
-
   NERDSpaceDelims = 1,
   NERDCommentEmptyLines = 1,
   NERDTrimTrailingWhitespace = 1,
-}
 
-vim.api.nvim_exec(
-  [[call extend(g:ale_fixers, { '*': [ 'remove_trailing_lines', 'trim_whitespace' ] })]],
-  true
-)
+  indent_blankline_char = '▏',
+  indent_blankline_show_trailing_blankline_indent = false,
+  indent_blankline_filetype_exclude = { 'help', 'packer', 'dashboard' },
+  indent_blankline_use_treesitter = true,
+  indent_blankline_show_current_context = true,
+  indent_blankline_context_patterns = {
+    'class',
+    'function',
+    'method',
+    '^if',
+    '^while',
+    '^for',
+    '^object',
+    '^table',
+    'block',
+    'arguments',
+  },
+}
 
 vim.api.nvim_exec([[autocmd! User GoyoEnter Limelight]], true)
 vim.api.nvim_exec([[autocmd! User GoyoLeave Limelight!]], true)

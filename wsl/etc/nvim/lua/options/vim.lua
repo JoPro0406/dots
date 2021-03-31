@@ -19,7 +19,8 @@ hv.setoption {
   list = true,
   listchars = 'tab:>-,trail:·,eol:↲', -- ↵↲⏎
 
-  foldmethod = 'marker',
+  foldmethod = 'expr',
+  foldexpr = 'nvim_treesitter#foldexpr()',
   foldlevel = 99,
 
   wrap = true,
@@ -55,6 +56,9 @@ vim.bo.expandtab = true
 vim.wo.signcolumn = 'yes'
 vim.wo.number = true
 vim.wo.cursorline = true
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.wo.foldlevel = 99
 vim.wo.list = true
 vim.wo.wrap = true
 vim.wo.linebreak = true

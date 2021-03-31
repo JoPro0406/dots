@@ -28,6 +28,6 @@ hv.noremap('n', '<Leader>fa', ':DashboardFindWord<CR>', { silent = true })
 hv.noremap('n', '<Leader>fm', ':DashboardJumpMarks<CR>', { silent = true })
 hv.noremap('n', '<Leader>nf', ':DashboardNewFile<CR>', { silent = true })
 hv.noremap(
-  'n', '<Leader>fb', ":Telescope buffers show_all_buffers=true",
+  'n', '<Leader>fb', ":Telescope buffers show_all_buffers=true<CR>",
   { silent = true }
 )
