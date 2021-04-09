@@ -28,7 +28,10 @@ end
 
 -- }}}
 
-gl.short_line_list = { 'packer' }
+gl.short_line_list = { 'packer', 'NvimTree' }
+
+gls.short_line_left = { { ShortFileName = { provider = 'FileName' } } }
+gls.short_line_right = { { ShortLineColumn = { provider = 'LineColumn' } } }
 
 gls.left = {
   {

@@ -20,7 +20,7 @@ return require('packer').startup(
     -- lsp etc {{{
     use {
       'windwp/nvim-autopairs',
-      config = function() require('nvim-autopairs').setup() end
+      config = function() require('nvim-autopairs').setup { check_line_pair = false } end
     }
     use 'neovim/nvim-lspconfig'
     use 'glepnir/lspsaga.nvim'
@@ -31,7 +31,12 @@ return require('packer').startup(
       requires = { 'hrsh7th/vim-vsnip-integ' },
     }
     use 'onsails/lspkind-nvim'
-    use 'mhartington/formatter.nvim'
+    use {
+      'mhartington/formatter.nvim',
+      cmd = { 'Format', 'FormatWrite' },
+      event = 'BufWritePre',
+      config = function() require('magic.formatter') end,
+    }
     -- }}}
 
     -- language plugins {{{
@@ -48,6 +53,14 @@ return require('packer').startup(
       'rust-lang/rust.vim',
       ft = 'rust',
     }
+    use {
+      'olical/fennel.vim',
+      ft = 'fennel',
+    }
+    use {
+      'pprovost/vim-ps1',
+      ft = { 'Powershell', 'ps1' }
+    }
     -- }}}
 
     -- quality of life {{{
@@ -57,18 +70,35 @@ return require('packer').startup(
     }
     use 'liuchengxu/vim-which-key'
     use 'tpope/vim-surround'
-    use 'tpope/vim-fugitive'
+    -- use 'tpope/vim-fugitive' -- idk if i need this lol
     use {
       'lewis6991/gitsigns.nvim',
       requires = { 'nvim-lua/plenary.nvim' },
       config = function() require('gitsigns').setup { numhl = true } end,
     }
     use 'tpope/vim-repeat'
-    use 'preservim/nerdcommenter'
+    use {
+      'timakro/vim-yadi',
+      config = function() vim.api.nvim_exec([[autocmd BufRead * DetectIndent]], true) end
+    }
+    -- use {
+      -- 'preservim/nerdcommenter',
+      -- config = function() require('qol.nerdcommenter') end,
+    -- }
+    use {
+      'b3nj5m1n/kommentary',
+      config = function() require('qol.kommentary') end,
+    }
     use {
       'TimUntersberger/neogit',
       requires = { 'nvim-lua/plenary.nvim' },
       cmd = 'Neogit',
+    }
+    use {
+      'kyazdani42/nvim-tree.lua',
+      requires = { 'kyazdani42/nvim-web-devicons' },
+      cmd = { 'NvimTreeToggle', 'NvimTreeRefresh', 'NvimTreeFindFile' },
+      config = function () require('qol.nvimtree') end,
     }
     -- }}}
 
@@ -96,13 +126,10 @@ return require('packer').startup(
       requires = { 'kyazdani42/nvim-web-devicons' } ,
       config = function() require('stylish.bufferline') end,
     }
-    -- use {
-      -- 'glepnir/indent-guides.nvim',
-      -- config = function() require('stylish.indentguides') end
-    -- }
     use {
       'lukas-reineke/indent-blankline.nvim',
       branch = 'lua',
+      config = function() require('stylish.indentblankline') end
     }
     use {
       'norcalli/nvim-colorizer.lua',

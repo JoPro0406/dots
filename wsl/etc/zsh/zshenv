@@ -12,7 +12,7 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 export PATH="$HOME/bin":$PATH
-export PATH="$HOME/usr/bin":$PATH
+export PATH="$HOME/bin/xtrn":$PATH
 export PATH="$data/cargo/bin":$PATH
 
 export STARSHIP_CONFIG="$conf/starship.toml"
