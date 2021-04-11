@@ -146,7 +146,11 @@ gls.right = {
   },
   {
     LineColumn = {
-      provider = 'LineColumn',
+      provider = function()
+        local line = vim.fn.line('.')
+        local column = vim.fn.col('.')
+        return line .. ':' .. column
+      end,
       highlight = { cl 'fg', cl 'bg1' },
       separator = '▊ ',
       separator_highlight = { cl 'yellow', cl 'bg1' },
@@ -157,7 +161,7 @@ gls.right = {
       provider = 'LinePercent',
       highlight = { cl 'fg2', cl 'yellow' },
       separator = ' ',
-      separator_highlight = { cl 'fg', cl 'bg1' },
+      separator_highlight = { 'NONE', cl 'bg1' },
     },
   },
   {

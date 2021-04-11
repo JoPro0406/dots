@@ -64,6 +64,7 @@ return require('packer').startup(
     -- }}}
 
     -- quality of life {{{
+    use 'editorconfig/editorconfig-vim'
     use {
       'godlygeek/tabular',
       cmd = { 'Tab', 'Tabularize' },
@@ -143,7 +144,7 @@ return require('packer').startup(
     use {
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate',
-      requires = { 'p00f/nvim-ts-rainbow' },
+      requires = { '~/src/nvim-ts-rainbow' },
       config = function() require('stylish.treesitter') end,
     }
     use {
