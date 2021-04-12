@@ -15,7 +15,7 @@ return require('packer').startup(
       'wbthomason/packer.nvim',
       opt = true
     }
-    -- use 'tweekmonster/startuptime.vim'
+    use 'tweekmonster/startuptime.vim'
 
     -- lsp etc {{{
     use {
