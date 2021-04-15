@@ -37,7 +37,7 @@ _G.packer_plugins = {
     path = "/home/archwsl/var/nvim/site/pack/packer/start/ayu"
   },
   ["dashboard-nvim"] = {
-    config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22stylish.dashboard\frequire\0" },
+    config = { "require('stylish.dashboard')" },
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/dashboard-nvim"
   },
@@ -52,18 +52,18 @@ _G.packer_plugins = {
   },
   ["formatter.nvim"] = {
     commands = { "Format", "FormatWrite" },
-    config = { "\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20magic.formatter\frequire\0" },
+    config = { "require('magic.formatter')" },
     loaded = false,
     needs_bufread = false,
     path = "/home/archwsl/var/nvim/site/pack/packer/opt/formatter.nvim"
   },
   ["galaxyline.nvim"] = {
-    config = { "\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23stylish.galaxyline\frequire\0" },
+    config = { "require('stylish.galaxyline')" },
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/galaxyline.nvim"
   },
   ["gitsigns.nvim"] = {
-    config = { "\27LJ\2\nD\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\nnumhl\2\nsetup\rgitsigns\frequire\0" },
+    config = { "require('gitsigns').setup { numhl = true }" },
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/gitsigns.nvim"
   },
@@ -74,12 +74,12 @@ _G.packer_plugins = {
     path = "/home/archwsl/var/nvim/site/pack/packer/opt/goyo.vim"
   },
   ["indent-blankline.nvim"] = {
-    config = { "\27LJ\2\n7\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\28stylish.indentblankline\frequire\0" },
+    config = { "require('stylish.indentblankline')" },
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/indent-blankline.nvim"
   },
   kommentary = {
-    config = { "\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19qol.kommentary\frequire\0" },
+    config = { "require('qol.kommentary')" },
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/kommentary"
   },
@@ -106,24 +106,34 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/archwsl/var/nvim/site/pack/packer/opt/markdown-preview.nvim"
   },
+  ["minimap.vim"] = {
+    config = { "require('stylish.minimap')" },
+    loaded = true,
+    path = "/home/archwsl/var/nvim/site/pack/packer/start/minimap.vim"
+  },
   neogit = {
     commands = { "Neogit" },
     loaded = false,
     needs_bufread = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/opt/neogit"
   },
+  ["neoscroll.nvim"] = {
+    config = { "require('neoscroll').setup()" },
+    loaded = true,
+    path = "/home/archwsl/var/nvim/site/pack/packer/start/neoscroll.nvim"
+  },
   ["nvim-autopairs"] = {
-    config = { "\27LJ\2\nT\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\20check_line_pair\1\nsetup\19nvim-autopairs\frequire\0" },
+    config = { "require('nvim-autopairs').setup { check_line_pair = false }" },
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/nvim-autopairs"
   },
   ["nvim-bufferline.lua"] = {
-    config = { "\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23stylish.bufferline\frequire\0" },
+    config = { "require('stylish.bufferline')" },
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/nvim-bufferline.lua"
   },
   ["nvim-colorizer.lua"] = {
-    config = { "\27LJ\2\nI\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\3\0\0\6*\f!packer\nsetup\14colorizer\frequire\0" },
+    config = { "require('colorizer').setup { '*', '!packer' }" },
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
@@ -137,13 +147,13 @@ _G.packer_plugins = {
   },
   ["nvim-tree.lua"] = {
     commands = { "NvimTreeToggle", "NvimTreeRefresh", "NvimTreeFindFile" },
-    config = { "\27LJ\2\n,\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\17qol.nvimtree\frequire\0" },
+    config = { "require('qol.nvimtree')" },
     loaded = false,
     needs_bufread = false,
     path = "/home/archwsl/var/nvim/site/pack/packer/opt/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    config = { "\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23stylish.treesitter\frequire\0" },
+    config = { "require('stylish.treesitter')" },
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/nvim-treesitter"
   },
@@ -173,6 +183,11 @@ _G.packer_plugins = {
     needs_bufread = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/opt/rust.vim"
   },
+  ["scrollbar.nvim"] = {
+    config = { "require('stylish.scrollbar')" },
+    loaded = true,
+    path = "/home/archwsl/var/nvim/site/pack/packer/start/scrollbar.nvim"
+  },
   ["startuptime.vim"] = {
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/startuptime.vim"
@@ -185,7 +200,7 @@ _G.packer_plugins = {
     path = "/home/archwsl/var/nvim/site/pack/packer/opt/tabular"
   },
   ["telescope.nvim"] = {
-    config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22stylish.telescope\frequire\0" },
+    config = { "require('stylish.telescope')" },
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/telescope.nvim"
   },
@@ -220,56 +235,62 @@ _G.packer_plugins = {
     path = "/home/archwsl/var/nvim/site/pack/packer/start/vim-which-key"
   },
   ["vim-yadi"] = {
-    config = { "\27LJ\2\nT\0\0\4\0\4\0\a6\0\0\0009\0\1\0009\0\2\0'\2\3\0+\3\2\0B\0\3\1K\0\1\0#autocmd BufRead * DetectIndent\14nvim_exec\bapi\bvim\0" },
+    config = { "vim.api.nvim_exec('autocmd BufRead * DetectIndent', true)" },
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/vim-yadi"
   }
 }
 
+-- Config for: scrollbar.nvim
+require('stylish.scrollbar')
 -- Config for: nvim-bufferline.lua
-try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23stylish.bufferline\frequire\0", "config", "nvim-bufferline.lua")
--- Config for: gitsigns.nvim
-try_loadstring("\27LJ\2\nD\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\nnumhl\2\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
--- Config for: indent-blankline.nvim
-try_loadstring("\27LJ\2\n7\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\28stylish.indentblankline\frequire\0", "config", "indent-blankline.nvim")
+require('stylish.bufferline')
 -- Config for: vim-yadi
-try_loadstring("\27LJ\2\nT\0\0\4\0\4\0\a6\0\0\0009\0\1\0009\0\2\0'\2\3\0+\3\2\0B\0\3\1K\0\1\0#autocmd BufRead * DetectIndent\14nvim_exec\bapi\bvim\0", "config", "vim-yadi")
--- Config for: telescope.nvim
-try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22stylish.telescope\frequire\0", "config", "telescope.nvim")
--- Config for: nvim-colorizer.lua
-try_loadstring("\27LJ\2\nI\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\3\0\0\6*\f!packer\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
+vim.api.nvim_exec('autocmd BufRead * DetectIndent', true)
 -- Config for: nvim-treesitter
-try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23stylish.treesitter\frequire\0", "config", "nvim-treesitter")
+require('stylish.treesitter')
+-- Config for: telescope.nvim
+require('stylish.telescope')
+-- Config for: indent-blankline.nvim
+require('stylish.indentblankline')
 -- Config for: kommentary
-try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19qol.kommentary\frequire\0", "config", "kommentary")
--- Config for: dashboard-nvim
-try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22stylish.dashboard\frequire\0", "config", "dashboard-nvim")
--- Config for: galaxyline.nvim
-try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23stylish.galaxyline\frequire\0", "config", "galaxyline.nvim")
+require('qol.kommentary')
+-- Config for: gitsigns.nvim
+require('gitsigns').setup { numhl = true }
 -- Config for: nvim-autopairs
-try_loadstring("\27LJ\2\nT\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\20check_line_pair\1\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+require('nvim-autopairs').setup { check_line_pair = false }
+-- Config for: nvim-colorizer.lua
+require('colorizer').setup { '*', '!packer' }
+-- Config for: minimap.vim
+require('stylish.minimap')
+-- Config for: neoscroll.nvim
+require('neoscroll').setup()
+-- Config for: dashboard-nvim
+require('stylish.dashboard')
+-- Config for: galaxyline.nvim
+require('stylish.galaxyline')
 
 -- Command lazy-loads
+vim.cmd [[command! -nargs=* -range -bang -complete=file Neogit lua require("packer.load")({'neogit'}, { cmd = "Neogit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Format lua require("packer.load")({'formatter.nvim'}, { cmd = "Format", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file FormatWrite lua require("packer.load")({'formatter.nvim'}, { cmd = "FormatWrite", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeRefresh lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeRefresh", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeFindFile lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeFindFile", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Limelight lua require("packer.load")({'limelight.vim'}, { cmd = "Limelight", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Goyo lua require("packer.load")({'goyo.vim', 'limelight.vim'}, { cmd = "Goyo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Neogit lua require("packer.load")({'neogit'}, { cmd = "Neogit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeRefresh lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeRefresh", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Format lua require("packer.load")({'formatter.nvim'}, { cmd = "Format", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file FormatWrite lua require("packer.load")({'formatter.nvim'}, { cmd = "FormatWrite", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Tabularize lua require("packer.load")({'tabular'}, { cmd = "Tabularize", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Tab lua require("packer.load")({'tabular'}, { cmd = "Tab", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
+vim.cmd [[au FileType rust ++once lua require("packer.load")({'rust.vim'}, { ft = "rust" }, _G.packer_plugins)]]
 vim.cmd [[au FileType fennel ++once lua require("packer.load")({'fennel.vim'}, { ft = "fennel" }, _G.packer_plugins)]]
 vim.cmd [[au FileType nix ++once lua require("packer.load")({'vim-nix'}, { ft = "nix" }, _G.packer_plugins)]]
 vim.cmd [[au FileType Powershell ++once lua require("packer.load")({'vim-ps1'}, { ft = "Powershell" }, _G.packer_plugins)]]
 vim.cmd [[au FileType ps1 ++once lua require("packer.load")({'vim-ps1'}, { ft = "ps1" }, _G.packer_plugins)]]
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
-vim.cmd [[au FileType rust ++once lua require("packer.load")({'rust.vim'}, { ft = "rust" }, _G.packer_plugins)]]
   -- Event lazy-loads
 vim.cmd [[au BufWritePre * ++once lua require("packer.load")({'formatter.nvim'}, { event = "BufWritePre *" }, _G.packer_plugins)]]
 vim.cmd("augroup END")

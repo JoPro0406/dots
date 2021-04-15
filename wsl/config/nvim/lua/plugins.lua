@@ -1,9 +1,7 @@
 local install_path = vim.fn.stdpath('data') .. '/site/packer/opt/packer.nvim' -- {{{
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.api.nvim_exec(
-    '!git clone https://github.com/wbthomason/packer.nvim ' .. install_path,
-    true
-  )
+  vim.fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path })
+  vim.api.nvim_exec('packadd packer.nvim', true)
 end -- }}}
 
 vim.api.nvim_exec([[packadd packer.nvim]], true) -- {{{
@@ -20,7 +18,7 @@ return require('packer').startup(
     -- lsp etc {{{
     use {
       'windwp/nvim-autopairs',
-      config = function() require('nvim-autopairs').setup { check_line_pair = false } end
+      config = [[require('nvim-autopairs').setup { check_line_pair = false }]],
     }
     use 'neovim/nvim-lspconfig'
     use 'glepnir/lspsaga.nvim'
@@ -35,7 +33,7 @@ return require('packer').startup(
       'mhartington/formatter.nvim',
       cmd = { 'Format', 'FormatWrite' },
       event = 'BufWritePre',
-      config = function() require('magic.formatter') end,
+      config = [[require('magic.formatter')]],
     }
     -- }}}
 
@@ -71,24 +69,19 @@ return require('packer').startup(
     }
     use 'liuchengxu/vim-which-key'
     use 'tpope/vim-surround'
-    -- use 'tpope/vim-fugitive' -- idk if i need this lol
     use {
       'lewis6991/gitsigns.nvim',
       requires = { 'nvim-lua/plenary.nvim' },
-      config = function() require('gitsigns').setup { numhl = true } end,
+      config = [[require('gitsigns').setup { numhl = true }]],
     }
     use 'tpope/vim-repeat'
     use {
       'timakro/vim-yadi',
-      config = function() vim.api.nvim_exec([[autocmd BufRead * DetectIndent]], true) end
+      config = [[vim.api.nvim_exec('autocmd BufRead * DetectIndent', true)]]
     }
-    -- use {
-      -- 'preservim/nerdcommenter',
-      -- config = function() require('qol.nerdcommenter') end,
-    -- }
     use {
       'b3nj5m1n/kommentary',
-      config = function() require('qol.kommentary') end,
+      config = [[require('qol.kommentary')]],
     }
     use {
       'TimUntersberger/neogit',
@@ -99,7 +92,7 @@ return require('packer').startup(
       'kyazdani42/nvim-tree.lua',
       requires = { 'kyazdani42/nvim-web-devicons' },
       cmd = { 'NvimTreeToggle', 'NvimTreeRefresh', 'NvimTreeFindFile' },
-      config = function () require('qol.nvimtree') end,
+      config = [[require('qol.nvimtree')]],
     }
     -- }}}
 
@@ -111,30 +104,30 @@ return require('packer').startup(
         'nvim-lua/plenary.nvim',
         'kyazdani42/nvim-web-devicons',
       },
-      config = function() require('stylish.telescope') end,
+      config = [[require('stylish.telescope')]],
     }
     use {
       'glepnir/dashboard-nvim',
-      config = function() require('stylish.dashboard') end,
+      config = [[require('stylish.dashboard')]],
     }
     use {
       'glepnir/galaxyline.nvim',
       requires = { { 'kyazdani42/nvim-web-devicons', opt = true } },
-      config = function() require('stylish.galaxyline') end,
+      config = [[require('stylish.galaxyline')]],
     }
     use {
       'akinsho/nvim-bufferline.lua',
       requires = { 'kyazdani42/nvim-web-devicons' } ,
-      config = function() require('stylish.bufferline') end,
+      config = [[require('stylish.bufferline')]],
     }
     use {
       'lukas-reineke/indent-blankline.nvim',
       branch = 'lua',
-      config = function() require('stylish.indentblankline') end
+      config = [[require('stylish.indentblankline')]]
     }
     use {
       'norcalli/nvim-colorizer.lua',
-      config = function() require('colorizer').setup { '*', '!packer' } end,
+      config = [[require('colorizer').setup { '*', '!packer' }]],
     }
     use {
       'junegunn/goyo.vim',
@@ -145,7 +138,20 @@ return require('packer').startup(
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate',
       requires = { '~/src/nvim-ts-rainbow' },
-      config = function() require('stylish.treesitter') end,
+      config = [[require('stylish.treesitter')]],
+    }
+    use {
+      'karb94/neoscroll.nvim',
+      config = [[require('neoscroll').setup()]],
+    }
+    use {
+      'Xuyuanp/scrollbar.nvim',
+      config = [[require('stylish.scrollbar')]],
+    }
+    use {
+      'wfxr/minimap.vim',
+      run = 'cargo install --locked code-minimap',
+      config = [[require('stylish.minimap')]],
     }
     use {
       'Luxed/ayu-vim',

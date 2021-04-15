@@ -1,33 +1,25 @@
+local function prettier()
+  return {
+    exe = 'prettier',
+    args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
+    stdin = true,
+  }
+end
+
+local function lua_format()
+  return { exe = 'lua-format', stdin = true }
+end
+
+local function rustfmt()
+  return { exe = 'rustfmt', args = { '--emit=stdout' }, stdin = true }
+end
+
 require('formatter').setup {
   logging = false,
   filetype = {
-    javascript = {
-      function()
-        return {
-          exe = 'prettier',
-          args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
-          stdin = true,
-        }
-      end,
-    },
-    lua = {
-      function()
-        return { exe = 'lua-format', stdin = true }
-      end,
-    },
-    rust = {
-      function()
-        return { exe = 'rustfmt', args = { '--emit=stdout' }, stdin = true }
-      end,
-    },
+    javascript = { prettier },
+    json = { prettier },
+    lua = { lua_format },
+    rust = { rustfmt },
   },
 }
-
-vim.api.nvim_exec(
-  [[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.js,*.rs,*.lua FormatWrite
-augroup END
-]], true
-)
