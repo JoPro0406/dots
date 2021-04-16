@@ -1,0 +1,45 @@
+local M = {}
+
+function M.setoption(opts)
+  for option, value in pairs(opts) do
+    vim.o[option] = value
+  end
+end
+
+function M.buf_setoption(opts)
+	for option, value in pairs(opts) do
+		vim.bo[option] = value
+	end
+end
+
+function M.setglobal(globs)
+  for global, value in pairs(globs) do
+    vim.g[global] = value
+  end
+end
+
+function M.map(mode, lhs, rhs, opts)
+  local options = { silent = true }
+  if opts then
+    options = vim.tbl_extend('force', options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+function M.noremap(mode, lhs, rhs, opts)
+  local options = { noremap = true, silent = true }
+  if opts then
+    options = vim.tbl_extend('force', options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+function M.buf_noremap(bufnr, mode, lhs, rhs, opts)
+	local options = { noremap = true, silent = true }
+  if opts then
+  	options = vim.tbl_extend('force', options, opts)
+  end
+  vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, options)
+end
+
+return M

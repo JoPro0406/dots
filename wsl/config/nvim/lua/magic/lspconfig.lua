@@ -1,5 +1,8 @@
+-- https://github.com/neovim/nvim-lspconfig/
+-- https://github.com/glepnir/lspsaga.nvim/
+-- https://github.com/nvim-lua/lsp_extensions.nvim/
 local lspconfig = require('lspconfig')
-local hv = require('helpful.vim')
+local h = require('helpful')
 
 -- handlers {{{
 vim.lsp.handlers['textDocument/publishDiagnostics'] =
@@ -19,37 +22,28 @@ local saga = require('lspsaga')
 saga.init_lsp_saga()
 
 -- on_attach {{{
-local on_attach = function()
+local on_attach = function(client, bufnr)
+  h.buf_setoption { omnifunc = 'v:lua.vim.lsp.omnifunc' }
   -- Keybindings for LSPs
-  hv.noremap(
-    'n', 'gd', '<cmd>lua require("lspsaga.provider").preview_definition()<CR>',
-    { silent = true }
+  h.buf_noremap(
+    bufnr, 'n', 'gd', '<cmd>lua require("lspsaga.provider").preview_definition()<CR>'
   )
-  hv.noremap(
-    'n', 'gD', '<cmd>lua require("lspsaga.provider").lsp_finder()<CR>',
-    { silent = true }
+  h.buf_noremap(
+    bufnr, 'n', 'gD', '<cmd>lua require("lspsaga.provider").lsp_finder()<CR>'
   )
-  hv.noremap(
-    'n', 'gh', '<cmd>lua require("lspsaga.hover").render_hover_doc()<CR>',
-    { silent = true }
+  h.buf_noremap(
+    bufnr, 'n', 'gh', '<cmd>lua require("lspsaga.hover").render_hover_doc()<CR>'
   )
-  hv.noremap(
-    'n', 'gs', '<cmd>lua require("lspsaga.signaturehelp").signature_help()<CR>',
-    { silent = true }
+  h.buf_noremap(
+    bufnr, 'n', 'gs', '<cmd>lua require("lspsaga.signaturehelp").signature_help()<CR>'
   )
-  hv.noremap(
-    'n', 'ca', '<cmd>lua require("lspsaga.codeaction").code_action()<CR>',
-    { silent = true }
+  h.buf_noremap(
+    bufnr, 'n', 'ca', '<cmd>lua require("lspsaga.codeaction").code_action()<CR>'
   )
-  hv.noremap(
-    'v', 'ca',
-    ':<C-U>lua require("lspsaga.codeaction").range_code_action()<CR>',
-    { silent = true }
+  h.buf_noremap(
+    bufnr, 'v', 'ca', ':<C-U>lua require("lspsaga.codeaction").range_code_action()<CR>'
   )
-  hv.noremap(
-    'n', 'gr', '<cmd>lua require("lspsaga.rename").rename()<CR>',
-    { silent = true }
-  )
+  h.buf_noremap(bufnr, 'n', 'gr', '<cmd>lua require("lspsaga.rename").rename()<CR>')
 end
 -- }}}
 
@@ -58,11 +52,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- }}}
 
-lspconfig.rust_analyzer.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-lspconfig.vimls.setup { on_attach = on_attach, capabilities = capabilities }
 local sumneko_root_path = vim.fn.stdpath('cache') .. '/lsp/lua-language-server' -- {{{
 local sumneko_binary = sumneko_root_path .. '/bin/Linux/lua-language-server'
 lspconfig.sumneko_lua.setup(
@@ -84,8 +73,16 @@ lspconfig.sumneko_lua.setup(
     capabilities = capabilities,
   }
 ) -- }}}
-lspconfig.jsonls.setup { on_attach = on_attach, capabilities = capabilities }
-lspconfig.tsserver.setup { on_attach = on_attach, capabilities = capabilities }
+
+local servers = { 'rust_analyzer', 'jsonls', 'tsserver', 'vimls' }
+
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup { on_attach = on_attach, capabilities = capabilities }
+end
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 -- lsp_extensions {{{
 
@@ -95,7 +92,7 @@ _G.inlay_hints = function()
     highlight = 'Comment',
     aligned = false,
     only_current_line = false,
-    enabled = { 'TypeHint', 'ParameterHint', 'ChainingHint' }
+    enabled = { 'TypeHint', 'ParameterHint', 'ChainingHint' },
   }
 end
 

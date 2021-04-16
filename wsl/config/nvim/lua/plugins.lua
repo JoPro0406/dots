@@ -1,3 +1,4 @@
+-- https://github.com/wbthomason/packer.nvim/
 local install_path = vim.fn.stdpath('data') .. '/site/packer/opt/packer.nvim' -- {{{
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path })
@@ -20,13 +21,19 @@ return require('packer').startup(
       'windwp/nvim-autopairs',
       config = [[require('nvim-autopairs').setup { check_line_pair = false }]],
     }
-    use 'neovim/nvim-lspconfig'
+    use {
+      'neovim/nvim-lspconfig',
+      config = [[require('magic.lspconfig')]],
+    }
     use 'glepnir/lspsaga.nvim'
     use 'nvim-lua/lsp_extensions.nvim'
-    use 'hrsh7th/nvim-compe'
     use {
-      'hrsh7th/vim-vsnip',
-      requires = { 'hrsh7th/vim-vsnip-integ' },
+      'hrsh7th/nvim-compe',
+      config = [[require('magic.compe')]]
+    }
+    use {
+      'norcalli/snippets.nvim',
+      config = [[require('magic.snippets')]]
     }
     use 'onsails/lspkind-nvim'
     use {

@@ -1,4 +1,5 @@
-local hv = require('helpful.vim')
+-- https://github.com/glepnir/dashboard-nvim/
+local h = require('helpful')
 
 -- headers {{{
 local headers = {
@@ -38,7 +39,7 @@ local headers = {
 }
 -- }}}
 
-hv.setglobal(
+h.setglobal(
   {
     dashboard_custom_header = headers.ayaya,
     dashboard_default_executive = 'telescope',

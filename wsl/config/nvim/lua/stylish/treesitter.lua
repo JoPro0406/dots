@@ -1,6 +1,8 @@
+-- https://github.com/nvim-treesitter/nvim-treesitter/
+-- https://github.com/JoPro0406/nvim-ts-rainbow (my fork)
 require('nvim-treesitter.configs').setup {
   ensure_installed = 'maintained',
-  highlight = { enable = true },
+  highlight = { enable = true, use_languagetree = true },
   indent = { enable = true },
   rainbow = {
     enable = true,

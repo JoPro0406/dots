@@ -1,3 +1,4 @@
+-- TODO: when actually on linux, make the colors xresources-dependent
 local M = {}
 
 M.light = {

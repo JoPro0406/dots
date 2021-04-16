@@ -1,3 +1,4 @@
+-- https://github.com/glepnir/galaxyline.nvim/
 local gl = require('galaxyline')
 local glc = require('galaxyline.condition')
 local c = require('stylish.galaxyline.colours')

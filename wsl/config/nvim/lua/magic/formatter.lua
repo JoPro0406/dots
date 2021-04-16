@@ -1,3 +1,4 @@
+-- https://github.com/mhartington/formatter.nvim/
 local function prettier()
   return {
     exe = 'prettier',

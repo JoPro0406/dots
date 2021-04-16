@@ -1,7 +1,7 @@
-local hv = require('helpful.vim')
+local h = require('helpful')
 
-hv.setglobal({ ayucolor = 'dark' })
-hv.setoption({ background = 'dark' })
+h.setglobal({ ayucolor = 'dark' })
+h.setoption({ background = 'dark' })
 
 vim.api.nvim_exec('colorscheme ayu', true)
 

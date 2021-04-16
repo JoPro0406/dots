@@ -1,4 +1,5 @@
-local hv = require('helpful.vim')
+-- https://github.com/Xuyuanp/scrollbar.nvim/
+local h = require('helpful')
 
 vim.api.nvim_exec(
   [[
@@ -12,7 +13,7 @@ augroup end
 ]], true
 )
 
-hv.setglobal {
+h.setglobal {
   scrollbar_max_size = 10,
   scrollbar_min_size = 3,
   scrollbar_right_offset = 1,

@@ -1,6 +1,7 @@
-local hv = require('helpful.vim')
+-- https://github.com/kyazdani42/nvim-tree.lua/
+local h = require('helpful')
 
-hv.setglobal {
+h.setglobal {
   nvim_tree_side = 'left',
   nvim_tree_width = 25,
   nvim_tree_ignore = { '.git', 'node_modules' },

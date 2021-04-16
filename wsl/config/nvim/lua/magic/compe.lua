@@ -1,4 +1,5 @@
-local hv = require('helpful.vim')
+-- https://github.com/hrsh7th/nvim-compe/
+local h = require('helpful')
 
 require'compe'.setup {
   enabled = true,
@@ -21,6 +22,7 @@ require'compe'.setup {
     nvim_lsp = true,
     nvim_lua = true,
     vsnip = true,
+    snippets_nvim = true,
   },
 }
 
@@ -41,11 +43,34 @@ end
 
 Completion = {}
 -- vsnip tab completion {{{
+-- Completion.tab_complete = function()
+--   if vim.fn.pumvisible() == 1 then
+--     return t '<C-n>'
+--   elseif vim.fn.call('vsnip#available', { 1 }) == 1 then
+--     return t '<Plug>(vsnip-expand-or-jump)'
+--   elseif check_back_space() then
+--     return t '<Tab>'
+--   else
+--     return vim.fn['compe#complete']()
+--   end
+-- end
+-- Completion.s_tab_complete = function()
+--   if vim.fn.pumvisible() == 1 then
+--     return t '<C-p>'
+--   elseif vim.fn.call('vsnip#jumpable', { -1 }) == 1 then
+--     return t '<Plug>(vsnip-jump-prev)'
+--   else
+--     return t '<S-Tab>'
+--   end
+-- end
+-- }}}
+
+-- snippets.nvim tab completion {{{
 Completion.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t '<C-n>'
-  elseif vim.fn.call('vsnip#available', { 1 }) == 1 then
-    return t '<Plug>(vsnip-expand-or-jump)'
+  elseif require('snippets').has_active_snippet() then
+    return t "<cmd>lua require('snippets').expand_or_advance()<CR>"
   elseif check_back_space() then
     return t '<Tab>'
   else
@@ -55,8 +80,8 @@ end
 Completion.s_tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t '<C-p>'
-  elseif vim.fn.call('vsnip#jumpable', { -1 }) == 1 then
-    return t '<Plug>(vsnip-jump-prev)'
+  elseif require('snippets').has_active_snippet() then
+    return t "<cmd>lua require('snippets').advance_snippet(-1)"
   else
     return t '<S-Tab>'
   end
@@ -82,17 +107,17 @@ Completion.autopairs_completion = function()
 end
 -- }}}
 
-hv.map('s', '<Tab>', 'v:lua.Completion.tab_complete()', { expr = true })
-hv.map('i', '<Tab>', 'v:lua.Completion.tab_complete()', { expr = true })
-hv.map('s', '<S-Tab>', 'v:lua.Completion.s_tab_complete()', { expr = true })
-hv.map('i', '<S-Tab>', 'v:lua.Completion.s_tab_complete()', { expr = true })
+h.map('s', '<Tab>', 'v:lua.Completion.tab_complete()', { expr = true })
+h.map('i', '<Tab>', 'v:lua.Completion.tab_complete()', { expr = true })
+h.map('s', '<S-Tab>', 'v:lua.Completion.s_tab_complete()', { expr = true })
+h.map('i', '<S-Tab>', 'v:lua.Completion.s_tab_complete()', { expr = true })
 
-hv.noremap('i', '<C-Space>', 'compe#complete()', { expr = true })
-hv.noremap(
+h.noremap('i', '<C-Space>', 'compe#complete()', { expr = true })
+h.noremap(
   'i', '<CR>', 'v:lua.Completion.autopairs_completion()', { expr = true }
 )
-hv.noremap('i', '<C-e>', "compe#close('<C-e>')", { expr = true })
-hv.noremap('i', '<C-f>', "compe#scroll({ 'delta': +4 })", { expr = true })
-hv.noremap('i', '<C-d>', "compe#scroll({ 'delta': -4 })", { expr = true })
+h.noremap('i', '<C-e>', "compe#close('<C-e>')", { expr = true })
+h.noremap('i', '<C-f>', "compe#scroll({ 'delta': +4 })", { expr = true })
+h.noremap('i', '<C-d>', "compe#scroll({ 'delta': -4 })", { expr = true })
 
 require('lspkind').init()

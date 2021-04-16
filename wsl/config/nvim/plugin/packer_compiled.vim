@@ -138,10 +138,12 @@ _G.packer_plugins = {
     path = "/home/archwsl/var/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
   ["nvim-compe"] = {
+    config = { "require('magic.compe')" },
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-lspconfig"] = {
+    config = { "require('magic.lspconfig')" },
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/nvim-lspconfig"
   },
@@ -188,6 +190,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/scrollbar.nvim"
   },
+  ["snippets.nvim"] = {
+    config = { "require('magic.snippets')" },
+    loaded = true,
+    path = "/home/archwsl/var/nvim/site/pack/packer/start/snippets.nvim"
+  },
   ["startuptime.vim"] = {
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/startuptime.vim"
@@ -222,14 +229,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/vim-surround"
   },
-  ["vim-vsnip"] = {
-    loaded = true,
-    path = "/home/archwsl/var/nvim/site/pack/packer/start/vim-vsnip"
-  },
-  ["vim-vsnip-integ"] = {
-    loaded = true,
-    path = "/home/archwsl/var/nvim/site/pack/packer/start/vim-vsnip-integ"
-  },
   ["vim-which-key"] = {
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/vim-which-key"
@@ -241,46 +240,52 @@ _G.packer_plugins = {
   }
 }
 
+-- Config for: neoscroll.nvim
+require('neoscroll').setup()
+-- Config for: indent-blankline.nvim
+require('stylish.indentblankline')
+-- Config for: gitsigns.nvim
+require('gitsigns').setup { numhl = true }
+-- Config for: telescope.nvim
+require('stylish.telescope')
+-- Config for: nvim-lspconfig
+require('magic.lspconfig')
+-- Config for: dashboard-nvim
+require('stylish.dashboard')
 -- Config for: scrollbar.nvim
 require('stylish.scrollbar')
 -- Config for: nvim-bufferline.lua
 require('stylish.bufferline')
--- Config for: vim-yadi
-vim.api.nvim_exec('autocmd BufRead * DetectIndent', true)
--- Config for: nvim-treesitter
-require('stylish.treesitter')
--- Config for: telescope.nvim
-require('stylish.telescope')
--- Config for: indent-blankline.nvim
-require('stylish.indentblankline')
+-- Config for: snippets.nvim
+require('magic.snippets')
 -- Config for: kommentary
 require('qol.kommentary')
--- Config for: gitsigns.nvim
-require('gitsigns').setup { numhl = true }
 -- Config for: nvim-autopairs
 require('nvim-autopairs').setup { check_line_pair = false }
 -- Config for: nvim-colorizer.lua
 require('colorizer').setup { '*', '!packer' }
 -- Config for: minimap.vim
 require('stylish.minimap')
--- Config for: neoscroll.nvim
-require('neoscroll').setup()
--- Config for: dashboard-nvim
-require('stylish.dashboard')
 -- Config for: galaxyline.nvim
 require('stylish.galaxyline')
+-- Config for: nvim-treesitter
+require('stylish.treesitter')
+-- Config for: nvim-compe
+require('magic.compe')
+-- Config for: vim-yadi
+vim.api.nvim_exec('autocmd BufRead * DetectIndent', true)
 
 -- Command lazy-loads
-vim.cmd [[command! -nargs=* -range -bang -complete=file Neogit lua require("packer.load")({'neogit'}, { cmd = "Neogit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Format lua require("packer.load")({'formatter.nvim'}, { cmd = "Format", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file FormatWrite lua require("packer.load")({'formatter.nvim'}, { cmd = "FormatWrite", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Neogit lua require("packer.load")({'neogit'}, { cmd = "Neogit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Tab lua require("packer.load")({'tabular'}, { cmd = "Tab", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Tabularize lua require("packer.load")({'tabular'}, { cmd = "Tabularize", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeRefresh lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeRefresh", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeFindFile lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeFindFile", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Limelight lua require("packer.load")({'limelight.vim'}, { cmd = "Limelight", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Goyo lua require("packer.load")({'goyo.vim', 'limelight.vim'}, { cmd = "Goyo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Tabularize lua require("packer.load")({'tabular'}, { cmd = "Tabularize", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Tab lua require("packer.load")({'tabular'}, { cmd = "Tab", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
