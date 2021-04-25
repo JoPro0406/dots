@@ -64,7 +64,7 @@ gls.left = {
         vim.api.nvim_command('hi GalaxyViMode guibg=' .. mode_colour())
         return alias[vim.fn.mode()] .. ' '
       end,
-      highlight = { cl 'fg2', cl 'fg2', 'bold' },
+      highlight = { cl 'fg2', cl 'fg2' },
     },
   },
   {

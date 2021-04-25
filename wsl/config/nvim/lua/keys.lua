@@ -15,7 +15,7 @@ h.noremap('n', '<Leader>bn', ':bnext<CR>', { silent = true })
 h.noremap('n', '<Leader>bp', ':bprevious<CR>', { silent = true })
 h.noremap('n', '<Leader>bw', ':bwipeout<CR>', { silent = true })
 
-h.noremap('n', '<Leader>G', ':Goyo<CR>', { silent = true })
+-- h.noremap('n', '<Leader>G', ':Goyo<CR>', { silent = true })
 
 h.noremap('n', '<M-F>', ':Format<CR>', { silent = false })
 

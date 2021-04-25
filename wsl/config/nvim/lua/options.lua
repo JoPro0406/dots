@@ -80,5 +80,5 @@ h.setglobal {
   vimsyn_embed = 'lPr',
 }
 
-vim.api.nvim_exec([[autocmd! User GoyoEnter Limelight]], true)
-vim.api.nvim_exec([[autocmd! User GoyoLeave Limelight!]], true)
+-- vim.api.nvim_exec([[autocmd! User GoyoEnter Limelight]], true)
+-- vim.api.nvim_exec([[autocmd! User GoyoLeave Limelight!]], true)

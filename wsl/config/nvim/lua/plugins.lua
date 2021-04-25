@@ -1,40 +1,25 @@
 -- https://github.com/wbthomason/packer.nvim/
 local install_path = vim.fn.stdpath('data') .. '/site/packer/opt/packer.nvim' -- {{{
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.system({ 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path })
+  vim.fn.system(
+    { 'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path }
+  )
   vim.api.nvim_exec('packadd packer.nvim', true)
 end -- }}}
 
 vim.api.nvim_exec([[packadd packer.nvim]], true) -- {{{
--- LuaFormatter off
-return require('packer').startup(
+return require('packer').startup {
   function()
     -- Packer can manage itself as an optional plugin
-    use {
-      'wbthomason/packer.nvim',
-      opt = true
-    }
+    use { 'wbthomason/packer.nvim', opt = true }
     use 'tweekmonster/startuptime.vim'
 
     -- lsp etc {{{
-    use {
-      'windwp/nvim-autopairs',
-      config = [[require('nvim-autopairs').setup { check_line_pair = false }]],
-    }
-    use {
-      'neovim/nvim-lspconfig',
-      config = [[require('magic.lspconfig')]],
-    }
+    use { 'neovim/nvim-lspconfig', config = [[require('magic.lspconfig')]] }
     use 'glepnir/lspsaga.nvim'
     use 'nvim-lua/lsp_extensions.nvim'
-    use {
-      'hrsh7th/nvim-compe',
-      config = [[require('magic.compe')]]
-    }
-    use {
-      'norcalli/snippets.nvim',
-      config = [[require('magic.snippets')]]
-    }
+    use { 'hrsh7th/nvim-compe', config = [[require('magic.compe')]] }
+    use { 'norcalli/snippets.nvim', config = [[require('magic.snippets')]] }
     use 'onsails/lspkind-nvim'
     use {
       'mhartington/formatter.nvim',
@@ -45,35 +30,30 @@ return require('packer').startup(
     -- }}}
 
     -- language plugins {{{
-    use {
-      'LnL7/vim-nix',
-      ft = 'nix',
-    }
+    use { 'LnL7/vim-nix', ft = 'nix' }
     use {
       'iamcco/markdown-preview.nvim',
       run = ':call mkdp#util#install()',
       ft = 'markdown',
     }
-    use {
-      'rust-lang/rust.vim',
-      ft = 'rust',
-    }
-    use {
-      'olical/fennel.vim',
-      ft = 'fennel',
-    }
-    use {
-      'pprovost/vim-ps1',
-      ft = { 'Powershell', 'ps1' }
-    }
+    use { 'rust-lang/rust.vim', ft = 'rust' }
+    use { 'olical/fennel.vim', ft = 'fennel' }
+    use { 'pprovost/vim-ps1', ft = { 'Powershell', 'ps1' } }
     -- }}}
 
     -- quality of life {{{
-    use 'editorconfig/editorconfig-vim'
+    use 'glepnir/prodoc.nvim'
+    use { 'windwp/nvim-autopairs', config = [[require('qol.autopairs')]] }
     use {
-      'godlygeek/tabular',
-      cmd = { 'Tab', 'Tabularize' },
+      'https://github.com/windwp/nvim-spectre',
+      requires = {
+        'nvim-lua/plenary.nvim',
+        'nvim-lua/popup.nvim',
+        'kyazdani42/nvim-web-devicons',
+      },
     }
+    use 'editorconfig/editorconfig-vim'
+    use { 'godlygeek/tabular', cmd = { 'Tab', 'Tabularize' } }
     use 'liuchengxu/vim-which-key'
     use 'tpope/vim-surround'
     use {
@@ -84,12 +64,9 @@ return require('packer').startup(
     use 'tpope/vim-repeat'
     use {
       'timakro/vim-yadi',
-      config = [[vim.api.nvim_exec('autocmd BufRead * DetectIndent', true)]]
+      config = [[vim.api.nvim_exec('autocmd BufRead * DetectIndent', true)]],
     }
-    use {
-      'b3nj5m1n/kommentary',
-      config = [[require('qol.kommentary')]],
-    }
+    use { 'b3nj5m1n/kommentary', config = [[require('qol.kommentary')]] }
     use {
       'TimUntersberger/neogit',
       requires = { 'nvim-lua/plenary.nvim' },
@@ -113,10 +90,7 @@ return require('packer').startup(
       },
       config = [[require('stylish.telescope')]],
     }
-    use {
-      'glepnir/dashboard-nvim',
-      config = [[require('stylish.dashboard')]],
-    }
+    use { 'glepnir/dashboard-nvim', config = [[require('stylish.dashboard')]] }
     use {
       'glepnir/galaxyline.nvim',
       requires = { { 'kyazdani42/nvim-web-devicons', opt = true } },
@@ -124,48 +98,29 @@ return require('packer').startup(
     }
     use {
       'akinsho/nvim-bufferline.lua',
-      requires = { 'kyazdani42/nvim-web-devicons' } ,
+      requires = { 'kyazdani42/nvim-web-devicons' },
       config = [[require('stylish.bufferline')]],
     }
     use {
       'lukas-reineke/indent-blankline.nvim',
       branch = 'lua',
-      config = [[require('stylish.indentblankline')]]
+      config = [[require('stylish.indentblankline')]],
     }
     use {
       'norcalli/nvim-colorizer.lua',
       config = [[require('colorizer').setup { '*', '!packer' }]],
     }
-    use {
-      'junegunn/goyo.vim',
-      requires = { { 'junegunn/limelight.vim', cmd = { 'Limelight', 'Goyo' } } },
-      cmd = 'Goyo',
-    }
+    use { "kdav5758/TrueZen.nvim", config = [[require('stylish.truezen')]] }
     use {
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate',
-      requires = { '~/src/nvim-ts-rainbow' },
+      requires = { 'nvim-treesitter/playground', '~/src/nvim-ts-rainbow' },
       config = [[require('stylish.treesitter')]],
     }
-    use {
-      'karb94/neoscroll.nvim',
-      config = [[require('neoscroll').setup()]],
-    }
-    use {
-      'Xuyuanp/scrollbar.nvim',
-      config = [[require('stylish.scrollbar')]],
-    }
-    use {
-      'wfxr/minimap.vim',
-      run = 'cargo install --locked code-minimap',
-      config = [[require('stylish.minimap')]],
-    }
-    use {
-      'Luxed/ayu-vim',
-      as = 'ayu',
-    }
+    use { 'karb94/neoscroll.nvim', config = [[require('neoscroll').setup()]] }
+    use { 'Luxed/ayu-vim', as = 'ayu' }
     -- }}}
-  end
-)
--- LuaFormatter on
+  end,
+  -- config = { profile = { enable = true } },
+}
 -- }}}
