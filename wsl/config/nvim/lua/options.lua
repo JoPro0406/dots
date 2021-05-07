@@ -9,6 +9,7 @@ h.setoption {
   sidescrolloff = 5,
   mouse = 'a',
   termguicolors = true,
+  guifont = 'FiraCode NF',
 
   laststatus = 2,
   showtabline = 2,

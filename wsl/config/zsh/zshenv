@@ -3,6 +3,8 @@ export data="$HOME/var"
 export cache="$HOME/var/cache"
 export dots="$HOME/src/dots"
 
+# export TERM="wezterm"
+
 export XDG_CONFIG_HOME="$conf"
 export XDG_DATA_HOME="$data"
 export XDG_CACHE_HOME="$cache"
@@ -30,5 +32,6 @@ export GOPATH="$cache/go"
 
 export RUSTUP_HOME="$data/rustup"
 export CARGO_HOME="$data/cargo"
+export STACK_ROOT="$data/stack"
 
 export BTPD_HOME="$data/btpd"

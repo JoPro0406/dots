@@ -15,5 +15,7 @@ if ! subsystemctl is-running; then
   $SUDO subsystemctl start
 fi
 
+xrdb -merge $conf/x/res
+
 bg() { ("$@" &) >/dev/null 2>&1; }
 bg rmd

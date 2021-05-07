@@ -1,6 +1,6 @@
 -- https://github.com/neovim/nvim-lspconfig/
 -- https://github.com/glepnir/lspsaga.nvim/
--- https://github.com/nvim-lua/lsp_extensions.nvim/
+-- https://github.com/simrat39/rust-tools.nvim/
 local lspconfig = require('lspconfig')
 local h = require('helpful')
 
@@ -9,7 +9,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] =
   vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
     {
-      underline = false,
+      underline = true,
       virtual_text = true,
       signs = true,
       update_in_insert = true,
@@ -19,31 +19,25 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] =
 
 local saga = require('lspsaga')
 
-saga.init_lsp_saga()
+saga.init_lsp_saga { border_style = 'round' }
 
 -- on_attach {{{
-local on_attach = function(client, bufnr)
+local on_attach = function(client)
   h.buf_setoption { omnifunc = 'v:lua.vim.lsp.omnifunc' }
   -- Keybindings for LSPs
-  h.buf_noremap(
-    bufnr, 'n', 'gd', '<cmd>lua require("lspsaga.provider").preview_definition()<CR>'
-  )
-  h.buf_noremap(
-    bufnr, 'n', 'gD', '<cmd>lua require("lspsaga.provider").lsp_finder()<CR>'
-  )
-  h.buf_noremap(
-    bufnr, 'n', 'gh', '<cmd>lua require("lspsaga.hover").render_hover_doc()<CR>'
-  )
-  h.buf_noremap(
-    bufnr, 'n', 'gs', '<cmd>lua require("lspsaga.signaturehelp").signature_help()<CR>'
-  )
-  h.buf_noremap(
-    bufnr, 'n', 'ca', '<cmd>lua require("lspsaga.codeaction").code_action()<CR>'
-  )
-  h.buf_noremap(
-    bufnr, 'v', 'ca', ':<C-U>lua require("lspsaga.codeaction").range_code_action()<CR>'
-  )
-  h.buf_noremap(bufnr, 'n', 'gr', '<cmd>lua require("lspsaga.rename").rename()<CR>')
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec(
+      [[
+    hi LspReferenceRead gui=underline
+
+    augroup lsp_document_highlight
+      autocmd! * <buffer>
+      autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+      autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    augroup END
+    ]], false
+    )
+  end
 end
 -- }}}
 
@@ -52,52 +46,42 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- }}}
 
-local sumneko_root_path = vim.fn.stdpath('cache') .. '/lsp/lua-language-server' -- {{{
+local sumneko_root_path = '/home/' .. vim.fn.expand('$USER') .. '/src/lua-language-server' -- {{{
 local sumneko_binary = sumneko_root_path .. '/bin/Linux/lua-language-server'
-lspconfig.sumneko_lua.setup(
-  {
-    cmd = { sumneko_binary, '-E', sumneko_root_path .. '/main.lua' },
-    settings = {
-      Lua = {
-        runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
-        diagnostics = { globals = { 'vim', 'use', 'packer_plugins' } },
-        workspace = {
-          library = {
-            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-          },
+lspconfig.sumneko_lua.setup {
+  cmd = { sumneko_binary, '-E', sumneko_root_path .. '/main.lua' },
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
+      diagnostics = { globals = { 'vim', 'packer_plugins' } },
+      workspace = {
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
         },
       },
+      hint = { enable = true },
+      telemetry = { enabled = false },
     },
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-) -- }}}
+  },
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+-- }}}
 
-local servers = { 'rust_analyzer', 'jsonls', 'tsserver', 'vimls' }
+local servers =
+  { 'rust_analyzer', 'jsonls', 'tsserver', 'vimls', 'rnix', 'hls' }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup { on_attach = on_attach, capabilities = capabilities }
 end
-lspconfig.rust_analyzer.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
+
+require('rust-tools').setup {
+  tools = {
+    inlay_hints = {
+      show_parameter_hints = true,
+      parameter_hints_prefix = 'ᐊ',
+      other_hints_prefix = '»',
+    },
+  },
 }
-
--- lsp_extensions {{{
-
-_G.inlay_hints = function()
-  require('lsp_extensions').inlay_hints {
-    prefix = ' » ',
-    highlight = 'Comment',
-    aligned = false,
-    only_current_line = false,
-    enabled = { 'TypeHint', 'ParameterHint', 'ChainingHint' },
-  }
-end
-
-vim.api.nvim_exec(
-  [[autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua inlay_hints()]], true
-)
-
--- }}}

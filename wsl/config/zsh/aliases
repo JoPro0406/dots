@@ -17,3 +17,5 @@ alias vi='nvim'
 
 alias vconf='vim +"cd $conf/nvim"'
 alias zconf='vim +"cd $conf/zsh"'
+
+alias luamake=/home/archwsl/src/lua-language-server/3rd/luamake/luamake

@@ -4,7 +4,7 @@
 
 while :; do
   set --
-  for dir in ~/.cache ~/.local ~/.config ~/go ~/.cargo ~/.npm ~/.bash* ~/.viminfo ~/.tree-sitter ~/.parallel ~/Desktop ~/Documents ~/Downloads ~/Music ~/Pictures ~/Public ~/Templates ~/Videos; do
+  for dir in ~/.python_history ~/.node_repl_history ~/.clojure_history ~/.m2 ~/.xournalpp ~/.cache ~/.local ~/.config ~/go ~/.cargo ~/.npm ~/.bash* ~/.viminfo ~/.tree-sitter ~/.parallel ~/Desktop ~/Documents ~/Downloads ~/Music ~/Pictures ~/Public ~/Templates ~/Videos; do
     [ -e "$dir" ] && set -- "$@" "$dir"
   done
   [ "$1" ] && rm -rf -- "$@"

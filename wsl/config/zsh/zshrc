@@ -1,11 +1,14 @@
-source /mnt/d/src/znap/zsh-snap/znap.zsh
 #!/usr/bin/env zsh
+
+source /mnt/d/src/znap/zsh-snap/znap.zsh
+
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu select
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' matcher-list \
   'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 fpath=($ZDOTDIR/completions $fpath)
+
 # History
 set -k                  # comments
 setopt histignorespace
@@ -14,14 +17,17 @@ setopt hist_ignore_dups
 setopt share_history
 setopt auto_cd          # cd by directory name
 unsetopt flowcontrol    # disable <C-S> + <C-Q>
+
 # Autocompletion
 setopt NO_NOMATCH       # disable some globbing
 setopt complete_in_word
+
 # Plugins
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-completions
 znap source zsh-users/zsh-history-substring-search
 znap source zdharma/fast-syntax-highlighting
+
 # Keybinds
 bindkey '^[[H'  beginning-of-line              # Home
 bindkey '^[[F'  end-of-line                    # End
@@ -34,17 +40,27 @@ bindkey '^[[C'  forward-char                   # ArrowRight
 bindkey '^[[5~' beginning-of-buffer-or-history # PageUp
 bindkey '^[[6~' end-of-buffer-or-history       # PageDown
 bindkey '^[[Z'  reverse-menu-complete          # S-Tab
+
 # Aliases
 . $ZDOTDIR/aliases
+
 # Source stuff
 . /home/archwsl/.nix-profile/etc/profile.d/nix.sh
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
 # Prompt
 . $ZDOTDIR/prompt.zsh
 # eval "$(starship init zsh)"
+
 command_not_found_handler() {
   printf 'Command not found -> \033[33m%s\033[0m \n' "$0" >&2
   return 127
 }
+
+precmd() {
+  printf '\033]0;%s\007' "$(dirs)"
+}
+
 znap eval ls-colors 'dircolors $data/LS_COLORS'
+
 # lazy todos

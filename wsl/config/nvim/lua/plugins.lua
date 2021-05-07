@@ -9,15 +9,15 @@ end -- }}}
 
 vim.api.nvim_exec([[packadd packer.nvim]], true) -- {{{
 return require('packer').startup {
-  function()
+  function(use)
     -- Packer can manage itself as an optional plugin
     use { 'wbthomason/packer.nvim', opt = true }
     use 'tweekmonster/startuptime.vim'
 
     -- lsp etc {{{
     use { 'neovim/nvim-lspconfig', config = [[require('magic.lspconfig')]] }
+    use 'simrat39/rust-tools.nvim'
     use 'glepnir/lspsaga.nvim'
-    use 'nvim-lua/lsp_extensions.nvim'
     use { 'hrsh7th/nvim-compe', config = [[require('magic.compe')]] }
     use { 'norcalli/snippets.nvim', config = [[require('magic.snippets')]] }
     use 'onsails/lspkind-nvim'
@@ -39,9 +39,29 @@ return require('packer').startup {
     use { 'rust-lang/rust.vim', ft = 'rust' }
     use { 'olical/fennel.vim', ft = 'fennel' }
     use { 'pprovost/vim-ps1', ft = { 'Powershell', 'ps1' } }
+    use { 'neovimhaskell/haskell-vim', ft = 'haskell' }
     -- }}}
 
     -- quality of life {{{
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = {
+        'nvim-lua/popup.nvim',
+        'nvim-lua/plenary.nvim',
+        'kyazdani42/nvim-web-devicons',
+      },
+      config = [[require('qol.telescope')]],
+    }
+    use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate',
+      requires = {
+        'nvim-treesitter/playground',
+        'windwp/nvim-ts-autotag',
+        '~/src/nvim-ts-rainbow',
+      },
+      config = [[require('qol.treesitter')]],
+    }
     use 'glepnir/prodoc.nvim'
     use { 'windwp/nvim-autopairs', config = [[require('qol.autopairs')]] }
     use {
@@ -54,7 +74,7 @@ return require('packer').startup {
     }
     use 'editorconfig/editorconfig-vim'
     use { 'godlygeek/tabular', cmd = { 'Tab', 'Tabularize' } }
-    use 'liuchengxu/vim-which-key'
+    use 'folke/which-key.nvim'
     use 'tpope/vim-surround'
     use {
       'lewis6991/gitsigns.nvim',
@@ -81,15 +101,6 @@ return require('packer').startup {
     -- }}}
 
     -- stylish {{{
-    use {
-      'nvim-telescope/telescope.nvim',
-      requires = {
-        'nvim-lua/popup.nvim',
-        'nvim-lua/plenary.nvim',
-        'kyazdani42/nvim-web-devicons',
-      },
-      config = [[require('stylish.telescope')]],
-    }
     use { 'glepnir/dashboard-nvim', config = [[require('stylish.dashboard')]] }
     use {
       'glepnir/galaxyline.nvim',
@@ -111,14 +122,9 @@ return require('packer').startup {
       config = [[require('colorizer').setup { '*', '!packer' }]],
     }
     use { "kdav5758/TrueZen.nvim", config = [[require('stylish.truezen')]] }
-    use {
-      'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate',
-      requires = { 'nvim-treesitter/playground', '~/src/nvim-ts-rainbow' },
-      config = [[require('stylish.treesitter')]],
-    }
     use { 'karb94/neoscroll.nvim', config = [[require('neoscroll').setup()]] }
     use { 'Luxed/ayu-vim', as = 'ayu' }
+    use 'nekonako/xresources-nvim'
     -- }}}
   end,
   -- config = { profile = { enable = true } },

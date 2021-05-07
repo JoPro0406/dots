@@ -15,6 +15,10 @@ local function rustfmt()
   return { exe = 'rustfmt', args = { '--emit=stdout' }, stdin = true }
 end
 
+local function stylish_haskell()
+	return { exe = 'stylish-haskell', stdin = true }
+end
+
 require('formatter').setup {
   logging = false,
   filetype = {
@@ -22,5 +26,6 @@ require('formatter').setup {
     json = { prettier },
     lua = { lua_format },
     rust = { rustfmt },
+    haskell = { stylish_haskell },
   },
 }

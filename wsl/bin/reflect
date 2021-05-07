@@ -10,4 +10,4 @@ elif [ "$(whoami)" != root ]; then
   SUDO='su root -c '\''"$@"'\'' -- -'
 fi
 
-$SUDO reflector -p http -p https -p rsync -l 16 -f 8 --sort rate --save /etc/pacman.d/mirrorlist
+$SUDO reflector -p http -p https -l 64 -f 32 --sort rate --save /etc/pacman.d/mirrorlist

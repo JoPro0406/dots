@@ -4,6 +4,8 @@
 _G.Utils = {}
 _G.Commands = {}
 
+vim.g.mapleader = ' '
+
 require('plugins')
 require('keys')
 require('options')
