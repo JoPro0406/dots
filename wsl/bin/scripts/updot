@@ -6,7 +6,7 @@ rcp() {
 
 [ -z "$*" ] && msg="updot" || msg="$*"
 
-rcp $HOME/bin/* $dots/wsl/bin --exclude="xtrn/*" --exclude="stack/*"
+rcp $HOME/bin/scripts/* $dots/wsl/bin/scripts/
 rcp $XDG_CONFIG_HOME/nix/* $dots/wsl/config/nix/
 rcp $XDG_CONFIG_HOME/nixpkgs/* $dots/wsl/config/nixpkgs/
 rcp $XDG_CONFIG_HOME/nvim/* $dots/wsl/config/nvim/

@@ -9,6 +9,7 @@ h.setglobal {
     'packer',
     'dashboard',
     'NvimTree',
+    'man',
   },
   indent_blankline_use_treesitter = true,
   indent_blankline_show_current_context = true,

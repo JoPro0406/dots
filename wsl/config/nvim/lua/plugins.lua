@@ -10,9 +10,10 @@ end -- }}}
 vim.api.nvim_exec([[packadd packer.nvim]], true) -- {{{
 return require('packer').startup {
   function(use)
-    -- Packer can manage itself as an optional plugin
+    -- generic stuff
     use { 'wbthomason/packer.nvim', opt = true }
     use 'tweekmonster/startuptime.vim'
+    use 'tjdevries/astronauta.nvim'
 
     -- lsp etc {{{
     use { 'neovim/nvim-lspconfig', config = [[require('magic.lspconfig')]] }
@@ -121,9 +122,10 @@ return require('packer').startup {
       'norcalli/nvim-colorizer.lua',
       config = [[require('colorizer').setup { '*', '!packer' }]],
     }
-    use { "kdav5758/TrueZen.nvim", config = [[require('stylish.truezen')]] }
+    -- use { "kdav5758/TrueZen.nvim", config = [[require('stylish.truezen')]] }
     use { 'karb94/neoscroll.nvim', config = [[require('neoscroll').setup()]] }
-    use { 'Luxed/ayu-vim', as = 'ayu' }
+    -- use 'Luxed/ayu-vim'
+    use 'Shatur95/neovim-ayu'
     use 'nekonako/xresources-nvim'
     -- }}}
   end,
