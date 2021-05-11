@@ -8,14 +8,16 @@ export dots="$HOME/src/dots"
 export XDG_CONFIG_HOME="$conf"
 export XDG_DATA_HOME="$data"
 export XDG_CACHE_HOME="$cache"
+export XDG_BIN_HOME="$HOME/bin"
 
 export HISTFILE="$cache/zsh_hist"
 export HISTSIZE=10000
 export SAVEHIST=10000
 
 export PATH="$HOME/bin":$PATH
-export PATH="$HOME/bin/xtrn":$PATH
+export PATH="$HOME/bin/scripts":$PATH
 export PATH="$data/cargo/bin":$PATH
+export PATH="$data/pip/bin":$PATH
 
 export STARSHIP_CONFIG="$conf/starship.toml"
 export STARSHIP_CACHE="$cache"
@@ -33,5 +35,9 @@ export GOPATH="$cache/go"
 export RUSTUP_HOME="$data/rustup"
 export CARGO_HOME="$data/cargo"
 export STACK_ROOT="$data/stack"
+
+export GHCUP_USE_XDG_DIRS=1
+
+export R_ENVIRON_USER="$conf/r/renv"
 
 export BTPD_HOME="$data/btpd"

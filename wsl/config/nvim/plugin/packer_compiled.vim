@@ -76,9 +76,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/TrueZen.nvim"
   },
-  ayu = {
+  ["astronauta.nvim"] = {
     loaded = true,
-    path = "/home/archwsl/var/nvim/site/pack/packer/start/ayu"
+    path = "/home/archwsl/var/nvim/site/pack/packer/start/astronauta.nvim"
   },
   ["dashboard-nvim"] = {
     config = { "require('stylish.dashboard')" },
@@ -149,6 +149,10 @@ _G.packer_plugins = {
     config = { "require('neoscroll').setup()" },
     loaded = true,
     path = "/home/archwsl/var/nvim/site/pack/packer/start/neoscroll.nvim"
+  },
+  ["neovim-ayu"] = {
+    loaded = true,
+    path = "/home/archwsl/var/nvim/site/pack/packer/start/neovim-ayu"
   },
   ["nvim-autopairs"] = {
     config = { "require('qol.autopairs')" },
@@ -288,74 +292,73 @@ _G.packer_plugins = {
 }
 
 time("Defining packer_plugins", false)
--- Config for: neoscroll.nvim
-time("Config for neoscroll.nvim", true)
-require('neoscroll').setup()
-time("Config for neoscroll.nvim", false)
--- Config for: nvim-bufferline.lua
-time("Config for nvim-bufferline.lua", true)
-require('stylish.bufferline')
-time("Config for nvim-bufferline.lua", false)
--- Config for: telescope.nvim
-time("Config for telescope.nvim", true)
-require('qol.telescope')
-time("Config for telescope.nvim", false)
--- Config for: galaxyline.nvim
-time("Config for galaxyline.nvim", true)
-require('stylish.galaxyline')
-time("Config for galaxyline.nvim", false)
--- Config for: nvim-autopairs
-time("Config for nvim-autopairs", true)
-require('qol.autopairs')
-time("Config for nvim-autopairs", false)
--- Config for: indent-blankline.nvim
-time("Config for indent-blankline.nvim", true)
-require('stylish.indentblankline')
-time("Config for indent-blankline.nvim", false)
 -- Config for: vim-yadi
 time("Config for vim-yadi", true)
 vim.api.nvim_exec('autocmd BufRead * DetectIndent', true)
 time("Config for vim-yadi", false)
--- Config for: nvim-compe
-time("Config for nvim-compe", true)
-require('magic.compe')
-time("Config for nvim-compe", false)
--- Config for: nvim-colorizer.lua
-time("Config for nvim-colorizer.lua", true)
-require('colorizer').setup { '*', '!packer' }
-time("Config for nvim-colorizer.lua", false)
 -- Config for: gitsigns.nvim
 time("Config for gitsigns.nvim", true)
 require('gitsigns').setup { numhl = true }
 time("Config for gitsigns.nvim", false)
--- Config for: kommentary
-time("Config for kommentary", true)
-require('qol.kommentary')
-time("Config for kommentary", false)
--- Config for: snippets.nvim
-time("Config for snippets.nvim", true)
-require('magic.snippets')
-time("Config for snippets.nvim", false)
--- Config for: nvim-lspconfig
-time("Config for nvim-lspconfig", true)
-require('magic.lspconfig')
-time("Config for nvim-lspconfig", false)
--- Config for: dashboard-nvim
-time("Config for dashboard-nvim", true)
-require('stylish.dashboard')
-time("Config for dashboard-nvim", false)
+-- Config for: nvim-colorizer.lua
+time("Config for nvim-colorizer.lua", true)
+require('colorizer').setup { '*', '!packer' }
+time("Config for nvim-colorizer.lua", false)
+-- Config for: indent-blankline.nvim
+time("Config for indent-blankline.nvim", true)
+require('stylish.indentblankline')
+time("Config for indent-blankline.nvim", false)
 -- Config for: TrueZen.nvim
 time("Config for TrueZen.nvim", true)
 require('stylish.truezen')
 time("Config for TrueZen.nvim", false)
+-- Config for: nvim-compe
+time("Config for nvim-compe", true)
+require('magic.compe')
+time("Config for nvim-compe", false)
 -- Config for: nvim-treesitter
 time("Config for nvim-treesitter", true)
 require('qol.treesitter')
 time("Config for nvim-treesitter", false)
+-- Config for: nvim-lspconfig
+time("Config for nvim-lspconfig", true)
+require('magic.lspconfig')
+time("Config for nvim-lspconfig", false)
+-- Config for: neoscroll.nvim
+time("Config for neoscroll.nvim", true)
+require('neoscroll').setup()
+time("Config for neoscroll.nvim", false)
+-- Config for: snippets.nvim
+time("Config for snippets.nvim", true)
+require('magic.snippets')
+time("Config for snippets.nvim", false)
+-- Config for: kommentary
+time("Config for kommentary", true)
+require('qol.kommentary')
+time("Config for kommentary", false)
+-- Config for: nvim-autopairs
+time("Config for nvim-autopairs", true)
+require('qol.autopairs')
+time("Config for nvim-autopairs", false)
+-- Config for: dashboard-nvim
+time("Config for dashboard-nvim", true)
+require('stylish.dashboard')
+time("Config for dashboard-nvim", false)
+-- Config for: galaxyline.nvim
+time("Config for galaxyline.nvim", true)
+require('stylish.galaxyline')
+time("Config for galaxyline.nvim", false)
+-- Config for: telescope.nvim
+time("Config for telescope.nvim", true)
+require('qol.telescope')
+time("Config for telescope.nvim", false)
+-- Config for: nvim-bufferline.lua
+time("Config for nvim-bufferline.lua", true)
+require('stylish.bufferline')
+time("Config for nvim-bufferline.lua", false)
 
 -- Command lazy-loads
 time("Defining lazy-load commands", true)
-vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeFindFile lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeFindFile", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Tabularize lua require("packer.load")({'tabular'}, { cmd = "Tabularize", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Format lua require("packer.load")({'formatter.nvim'}, { cmd = "Format", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file FormatWrite lua require("packer.load")({'formatter.nvim'}, { cmd = "FormatWrite", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
@@ -363,19 +366,20 @@ vim.cmd [[command! -nargs=* -range -bang -complete=file Neogit lua require("pack
 vim.cmd [[command! -nargs=* -range -bang -complete=file Tab lua require("packer.load")({'tabular'}, { cmd = "Tab", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeRefresh lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeRefresh", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file NvimTreeFindFile lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeFindFile", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 time("Defining lazy-load commands", false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time("Defining lazy-load filetype autocommands", true)
-vim.cmd [[au FileType fennel ++once lua require("packer.load")({'fennel.vim'}, { ft = "fennel" }, _G.packer_plugins)]]
 vim.cmd [[au FileType nix ++once lua require("packer.load")({'vim-nix'}, { ft = "nix" }, _G.packer_plugins)]]
 vim.cmd [[au FileType Powershell ++once lua require("packer.load")({'vim-ps1'}, { ft = "Powershell" }, _G.packer_plugins)]]
 vim.cmd [[au FileType ps1 ++once lua require("packer.load")({'vim-ps1'}, { ft = "ps1" }, _G.packer_plugins)]]
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
 vim.cmd [[au FileType haskell ++once lua require("packer.load")({'haskell-vim'}, { ft = "haskell" }, _G.packer_plugins)]]
 vim.cmd [[au FileType rust ++once lua require("packer.load")({'rust.vim'}, { ft = "rust" }, _G.packer_plugins)]]
+vim.cmd [[au FileType fennel ++once lua require("packer.load")({'fennel.vim'}, { ft = "fennel" }, _G.packer_plugins)]]
 time("Defining lazy-load filetype autocommands", false)
   -- Event lazy-loads
 time("Defining lazy-load event autocommands", true)
@@ -383,6 +387,15 @@ vim.cmd [[au BufWritePre * ++once lua require("packer.load")({'formatter.nvim'},
 time("Defining lazy-load event autocommands", false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
+time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/haskell-vim/ftdetect/haskell.vim", true)
+vim.cmd [[source /home/archwsl/var/nvim/site/pack/packer/opt/haskell-vim/ftdetect/haskell.vim]]
+time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/haskell-vim/ftdetect/haskell.vim", false)
+time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim", true)
+vim.cmd [[source /home/archwsl/var/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim]]
+time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim", false)
+time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/vim-nix/ftdetect/nix.vim", true)
+vim.cmd [[source /home/archwsl/var/nvim/site/pack/packer/opt/vim-nix/ftdetect/nix.vim]]
+time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/vim-nix/ftdetect/nix.vim", false)
 time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/vim-ps1/ftdetect/ps1.vim", true)
 vim.cmd [[source /home/archwsl/var/nvim/site/pack/packer/opt/vim-ps1/ftdetect/ps1.vim]]
 time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/vim-ps1/ftdetect/ps1.vim", false)
@@ -392,15 +405,6 @@ time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/v
 time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/vim-ps1/ftdetect/xml.vim", true)
 vim.cmd [[source /home/archwsl/var/nvim/site/pack/packer/opt/vim-ps1/ftdetect/xml.vim]]
 time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/vim-ps1/ftdetect/xml.vim", false)
-time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/vim-nix/ftdetect/nix.vim", true)
-vim.cmd [[source /home/archwsl/var/nvim/site/pack/packer/opt/vim-nix/ftdetect/nix.vim]]
-time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/vim-nix/ftdetect/nix.vim", false)
-time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim", true)
-vim.cmd [[source /home/archwsl/var/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim]]
-time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim", false)
-time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/haskell-vim/ftdetect/haskell.vim", true)
-vim.cmd [[source /home/archwsl/var/nvim/site/pack/packer/opt/haskell-vim/ftdetect/haskell.vim]]
-time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/haskell-vim/ftdetect/haskell.vim", false)
 time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/fennel.vim/ftdetect/fennel.vim", true)
 vim.cmd [[source /home/archwsl/var/nvim/site/pack/packer/opt/fennel.vim/ftdetect/fennel.vim]]
 time("Sourcing ftdetect script at: /home/archwsl/var/nvim/site/pack/packer/opt/fennel.vim/ftdetect/fennel.vim", false)

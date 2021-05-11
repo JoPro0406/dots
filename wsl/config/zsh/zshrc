@@ -47,6 +47,7 @@ bindkey '^[[Z'  reverse-menu-complete          # S-Tab
 # Source stuff
 . /home/archwsl/.nix-profile/etc/profile.d/nix.sh
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -f "/home/archwsl/var/ghcup/env" ] && source "/home/archwsl/var/ghcup/env" # ghcup-env
 
 # Prompt
 . $ZDOTDIR/prompt.zsh

@@ -14,14 +14,22 @@ require'compe'.setup {
   max_kind_width = 100,
   max_menu_width = 100,
   documentation = true,
+
   source = {
-    buffer = true,
-    path = true,
-    tags = true,
-    spell = true,
-    nvim_lsp = true,
-    nvim_lua = true,
-    snippets_nvim = true,
+    snippets_nvim = { menu = '[SNP]', priority = 10 },
+    -- vsnip = { menu = '[SNP]', priority = 10 },
+    nvim_lsp = { menu = '[LSP]', priority = 10 },
+    nvim_lua = { menu = '[LUA]', priority = 9 },
+    path = { menu = '[PTH]', priority = 9 },
+    treesitter = { menu = '[TS]', priority = 9 },
+    spell = { menu = '[SPL]', priority = 9, filetypes = { 'markdown', 'tex' } },
+    buffer = {
+      menu = '[BUF]',
+      priority = 8,
+      ignored_filetypes = { 'markdown', 'tex' },
+    },
+    tags = { menu = '[TAG]', priority = 8 },
+    calc = { menu = '[CAL]', priority = 7 },
   },
 }
 
@@ -73,4 +81,4 @@ h.noremap('i', '<C-e>', "compe#close('<C-e>')", { expr = true })
 h.noremap('i', '<C-f>', "compe#scroll({ 'delta': +4 })", { expr = true })
 h.noremap('i', '<C-d>', "compe#scroll({ 'delta': -4 })", { expr = true })
 
-require('lspkind').init()
+require('lspkind').init {}

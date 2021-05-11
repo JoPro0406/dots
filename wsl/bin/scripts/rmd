@@ -1,0 +1,26 @@
+#!/bin/sh
+
+[ "$(pgrep -x rmd)" = "$$"  ] || exit
+
+while :; do
+  set --
+  for dir in ~/.bash*       \
+             ~/.cache       \
+             ~/.config      \
+             ~/.local       \
+             ~/.m2          \
+             ~/.tree-sitter \
+             ~/.xournalpp   \
+             ~/Desktop      \
+             ~/Documents    \
+             ~/Downloads    \
+             ~/Music        \
+             ~/Pictures     \
+             ~/Public       \
+             ~/Templates    \
+             ~/Videos; do
+    [ -e "$dir" ] && set -- "$@" "$dir"
+  done
+  [ "$1" ] && rm -rf -- "$@"
+  sleep 60
+done

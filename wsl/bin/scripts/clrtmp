@@ -1,0 +1,7 @@
+#!/bin/sh
+
+tmpdir="$HOME/tmp"
+
+cd "$tmpdir" || exit
+
+find . | grep '^.\/(?!no).*$' -P | xargs rm -rf

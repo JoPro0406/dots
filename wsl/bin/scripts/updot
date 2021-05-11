@@ -1,0 +1,20 @@
+#!/bin/sh
+
+rcp() {
+  rsync -a -hhh -P -@1 --mkpath "$@"
+}
+
+[ -z "$*" ] && msg="updot" || msg="$*"
+
+rcp $HOME/bin/scripts/* $dots/wsl/bin/scripts/
+rcp $XDG_CONFIG_HOME/nix/* $dots/wsl/config/nix/
+rcp $XDG_CONFIG_HOME/nixpkgs/* $dots/wsl/config/nixpkgs/
+rcp $XDG_CONFIG_HOME/nvim/* $dots/wsl/config/nvim/
+rcp $XDG_CONFIG_HOME/ranger/* $dots/wsl/config/ranger/
+rcp $XDG_CONFIG_HOME/zsh/* $dots/wsl/config/zsh/ --exclude="*.zwc"
+rcp $XDG_CONFIG_HOME/user-dirs.dirs $dots/wsl/config/
+
+cd "$dots" || exit
+git add .
+git commit -m "${msg}"
+git push

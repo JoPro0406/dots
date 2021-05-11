@@ -1,10 +1,13 @@
-local h = require('helpful')
+if _G.Settings.background == 'light' then
+  vim.o.background = 'light'
+else
+  vim.o.background = 'dark'
+end
 
-local colorscheme = 'xresources'
+-- Colorscheme-dependent functions {{{
 
-if colorscheme == 'ayu' then
-  h.setglobal({ ayucolor = 'dark' })
-  h.setoption({ background = 'dark' })
+local function luxed_ayu()
+  vim.g.ayucolor = 'dark'
 
   vim.api.nvim_exec(
     [[
@@ -16,8 +19,34 @@ if colorscheme == 'ayu' then
   )
 
   vim.api.nvim_exec('colorscheme ayu', true)
-elseif colorscheme == 'xresources' then
+end
+
+local function nvim_ayu()
+  local colors = require('ayu.colors')
+  vim.g.ayu_overrides = {
+    MatchParen = { fg = colors.markup, bg = colors.gutter_normal,
+                   style = 'bold' },
+  }
+
+  vim.api.nvim_exec('colorscheme ayu', true)
+end
+
+local function xresources()
   local xres = require('xresources')
-  
-  xres.highlight('MatchParen', { fg = xres.red, bg = xres.grey1, style = 'bold' })
+
+  xres.highlight(
+    'MatchParen', { fg = xres.red, bg = xres.grey1, style = 'bold' }
+  )
+end
+
+-- }}}
+
+if _G.Settings.colorscheme == 'ayu' then
+  if _G.Settings.ayu_ver == 'luxed' then
+    luxed_ayu()
+  elseif _G.Settings.ayu_ver == 'nvim' then
+    nvim_ayu()
+  end
+elseif _G.Settings.colorscheme == 'xresources' then
+  xresources()
 end
